@@ -24,10 +24,13 @@
 
 @layer base {
   * {
-    @apply border-0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   body {
-    @apply bg-white text-gray-900;
+    background-color: #fff;
+    color: #1f2937;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }

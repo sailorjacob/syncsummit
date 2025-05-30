@@ -4,6 +4,10 @@ import { getEventBySlug } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
+type Params = {
+  slug: string;
+}
+
 function formatDate(dateString: string) {
   const date = new Date(dateString)
   return new Intl.DateTimeFormat('en-US', {
@@ -28,7 +32,7 @@ function getEventTypeLabel(eventType: string) {
   }
 }
 
-export default async function EventPage({ params }: { params: { slug: string } }) {
+export default async function EventPage({ params }: { params: Params }) {
   const event = await getEventBySlug(params.slug)
   
   if (!event) {

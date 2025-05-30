@@ -4,6 +4,10 @@ import { getBlogPostBySlug } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
+type Params = {
+  slug: string;
+}
+
 function formatDate(dateString: string) {
   const date = new Date(dateString)
   return new Intl.DateTimeFormat('en-US', {
@@ -13,7 +17,8 @@ function formatDate(dateString: string) {
   }).format(date)
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+// Next.js expects this exact typing for dynamic route pages
+export default async function BlogPostPage({ params }: { params: Params }) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
