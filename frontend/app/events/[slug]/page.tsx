@@ -4,10 +4,10 @@ import { getEventBySlug } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
-interface EventParams {
-  params: {
-    slug: string
-  }
+// Use the proper Next.js dynamic route params type
+type PageProps = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 function formatDate(dateString: string) {
@@ -34,7 +34,7 @@ function getEventTypeLabel(eventType: string) {
   }
 }
 
-export default async function EventPage({ params }: EventParams) {
+export default async function EventPage({ params, searchParams }: PageProps) {
   const event = await getEventBySlug(params.slug)
   
   if (!event) {

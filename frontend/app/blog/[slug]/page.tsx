@@ -4,10 +4,10 @@ import { getBlogPostBySlug } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
-type Props = {
-  params: {
-    slug: string
-  }
+// Use the proper Next.js dynamic route params type
+type PageProps = {
+  params: { slug: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
 function formatDate(dateString: string) {
@@ -19,7 +19,7 @@ function formatDate(dateString: string) {
   }).format(date)
 }
 
-export default async function BlogPostPage({ params }: Props) {
+export default async function BlogPostPage({ params, searchParams }: PageProps) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
