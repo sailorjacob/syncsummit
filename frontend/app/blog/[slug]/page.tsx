@@ -4,7 +4,7 @@ import { getBlogPostBySlug } from '@/lib/queries'
 import { urlFor } from '@/lib/sanity'
 import PortableText from '@/components/PortableText'
 
-interface BlogPostParams {
+type Props = {
   params: {
     slug: string
   }
@@ -19,7 +19,7 @@ function formatDate(dateString: string) {
   }).format(date)
 }
 
-export default async function BlogPostPage({ params }: BlogPostParams) {
+export default async function BlogPostPage({ params }: Props) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
