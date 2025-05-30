@@ -34,7 +34,7 @@ function getEventTypeLabel(eventType: string) {
   }
 }
 
-export default async function EventPage({ params, searchParams }: PageProps) {
+export default async function EventPage({ params, searchParams: _searchParams }: PageProps) {
   const event = await getEventBySlug(params.slug)
   
   if (!event) {

@@ -19,7 +19,7 @@ function formatDate(dateString: string) {
   }).format(date)
 }
 
-export default async function BlogPostPage({ params, searchParams }: PageProps) {
+export default async function BlogPostPage({ params, searchParams: _searchParams }: PageProps) {
   const post = await getBlogPostBySlug(params.slug)
   
   if (!post) {
