@@ -24,7 +24,7 @@ export default function MembershipPage() {
           </p>
 
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">What's Included</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">What&apos;s Included</h2>
             <ul className="space-y-4 mb-8">
               {benefits.map((benefit, index) => (
                 <li key={index} className="flex items-start">
