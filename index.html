@@ -417,7 +417,10 @@
     }
     
     .card-description {
-      margin-top: 0.5rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
     }
     
     .card-link {
@@ -1279,39 +1282,23 @@
         max-width: 100%;
       }
       .card-description {
+        display: none;
+        transition: max-height 0.3s ease;
+      }
+      .content-card.expanded .card-description {
+        display: block;
         margin-top: 0.5rem;
       }
       .card-toggle {
-        display: none !important; /* Hide by default on desktop */
-        opacity: 0;
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        white-space: nowrap;
+        display: block;
         background: none;
         border: none;
         color: #888;
         font-size: 1.1rem;
         cursor: pointer;
         margin: 0.5rem 0 0 0;
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .card-toggle {
-        display: block !important;
-        opacity: 1;
-        position: static;
         width: 100%;
-        height: auto;
-        overflow: visible;
-        clip: auto;
-        clip-path: none;
-        white-space: normal;
+        text-align: left;
       }
     }
   </style>
@@ -1393,7 +1380,7 @@
         <!-- Sync Summit Courses -->
         <div class="content-card">
           <div class="card-icon-wrapper">
-            <i class="fas fa-graduation-cap card-icon"></i>
+            <i class="fas fa-music card-icon"></i>
           </div>
           <h3 class="card-title">Sync Summit Courses</h3>
           <p class="card-description">
@@ -1408,7 +1395,7 @@
         <!-- Sync Summits - Online All The Time -->
         <div class="content-card">
           <div class="card-icon-wrapper">
-            <i class="fas fa-globe card-icon"></i>
+            <i class="fas fa-headphones card-icon"></i>
           </div>
           <h3 class="card-title">Global Sync Events</h3>
           <p class="card-description">
@@ -1423,7 +1410,7 @@
         <!-- Sync Summit Consulting -->
         <div class="content-card">
           <div class="card-icon-wrapper">
-            <i class="fas fa-compass card-icon"></i>
+            <i class="fas fa-compact-disc card-icon"></i>
           </div>
           <h3 class="card-title">Expert Consulting</h3>
           <p class="card-description">
@@ -1438,7 +1425,7 @@
         <!-- Sync Summit Intelligence -->
         <div class="content-card">
           <div class="card-icon-wrapper">
-            <i class="fas fa-lightbulb card-icon"></i>
+            <i class="fas fa-record-vinyl card-icon"></i>
           </div>
           <h3 class="card-title">Industry Intelligence</h3>
           <p class="card-description">
@@ -1728,17 +1715,18 @@
         });
       }
     });
+  });
 
-    // Mobile card description toggle
-    if (window.innerWidth <= 900) {
-      document.querySelectorAll('.card-toggle').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          var card = btn.closest('.content-card');
-          card.classList.toggle('expanded');
-          btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
-        });
+  // Mobile card description toggle
+  if (window.innerWidth <= 900) {
+    document.querySelectorAll('.card-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var card = btn.closest('.content-card');
+        card.classList.toggle('expanded');
+        btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
       });
-    }
+    });
+  }
   </script>
 
   <!-- Sanity Integration -->
