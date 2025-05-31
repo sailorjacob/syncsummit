@@ -395,6 +395,58 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
+
+    /* Additional styles for new content */
+    .benefit-value {
+      display: block;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: var(--membership-primary);
+    }
+    
+    .pricing-header {
+      margin-bottom: 2rem;
+    }
+    
+    .price-discount {
+      font-size: 1.25rem;
+      color: var(--membership-accent);
+      font-weight: 600;
+      margin-top: 0.5rem;
+    }
+    
+    .pricing-details {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: var(--membership-bg);
+      border-radius: 12px;
+    }
+    
+    .standard-price {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      margin-bottom: 0.5rem;
+    }
+    
+    .offer-expires {
+      font-size: 1rem;
+      color: var(--membership-accent);
+      font-weight: 500;
+    }
+    
+    .pricing-note {
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    
+    .section-subtitle {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
   </style>
 </head>
 <body>
@@ -473,9 +525,9 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="page-title">
-          SYNC SUMMIT ANNUAL MEMBERSHIP
+          THE SYNC SUMMIT ANNUAL MEMBERSHIP
         </h1>
-        <p class="page-subtitle">Unlock premium access to industry events, expert courses, and exclusive resources for music licensing success</p>
+        <p class="page-subtitle">12 MONTHS OF ALL OUR SERVICES FOR $2000 – $3000 OFF THE STANDARD RATE</p>
       </div>
     </div>
   </section>
@@ -486,25 +538,27 @@
       <!-- Benefits -->
       <div class="benefits-section">
         <h2 class="section-title">Membership Benefits</h2>
-        <p class="section-subtitle">Join our community of music creators and supervisors to access exclusive resources, events, and opportunities.</p>
+        <p class="section-subtitle">THE SYNC SUMMIT ANNUAL MEMBERSHIP PROGRAM HAS BEEN DESIGNED TO GIVE YOU ACCESS TO ALL THE NETWORKING RESOURCES, EVENTS, COURSES, CONTACTS, LISTENING SESSIONS AND CONSULTING OPPORTUNITIES THAT WE HAVE TO OFFER – ALL BUNDLED IN A LOW ANNUAL RATE.</p>
         <div class="benefits-grid">
           <div class="benefit-card">
             <div class="benefit-icon-wrapper">
-              <i class="fas fa-graduation-cap benefit-icon"></i>
+              <i class="fas fa-ticket-alt benefit-icon"></i>
             </div>
-            <h3 class="benefit-title">All Courses Included</h3>
+            <h3 class="benefit-title">Event Access</h3>
             <p class="benefit-description">
-              Get unlimited access to all Sync Summit courses including The Sync Course and The Music, Brands & Ads Course. New courses added regularly.
+              Two Passes to each of our in-person and online events, including any events in North America and Europe.
+              <span class="benefit-value">$2000 value</span>
             </p>
           </div>
           
           <div class="benefit-card">
             <div class="benefit-icon-wrapper">
-              <i class="fas fa-calendar-check benefit-icon"></i>
+              <i class="fas fa-graduation-cap benefit-icon"></i>
             </div>
-            <h3 class="benefit-title">Event Discounts</h3>
+            <h3 class="benefit-title">Course Access</h3>
             <p class="benefit-description">
-              Receive exclusive member pricing on all Sync Summit events, both in-person and virtual. Save hundreds on event registrations.
+              Registration for all of our current and upcoming classes, including the sync sessions class and our music in ads course.
+              <span class="benefit-value">$1600 value</span>
             </p>
           </div>
           
@@ -512,9 +566,10 @@
             <div class="benefit-icon-wrapper">
               <i class="fas fa-headphones benefit-icon"></i>
             </div>
-            <h3 class="benefit-title">Priority Listening</h3>
+            <h3 class="benefit-title">Listening Sessions</h3>
             <p class="benefit-description">
-              Get early access and priority registration for all listening sessions with top music supervisors and industry executives.
+              Registration for every single listening session – over 40 per year.
+              <span class="benefit-value">$4000 value</span>
             </p>
           </div>
           
@@ -522,107 +577,29 @@
             <div class="benefit-icon-wrapper">
               <i class="fas fa-video benefit-icon"></i>
             </div>
-            <h3 class="benefit-title">Video Archives</h3>
+            <h3 class="benefit-title">Monthly Consultation</h3>
             <p class="benefit-description">
-              Watch recordings of past events, workshops, and panels. Access hundreds of hours of exclusive content on-demand.
-            </p>
-          </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
-              <i class="fas fa-users benefit-icon"></i>
-            </div>
-            <h3 class="benefit-title">Member Community</h3>
-            <p class="benefit-description">
-              Join our exclusive member community to network, collaborate, and share opportunities with fellow sync professionals.
-            </p>
-          </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
-              <i class="fas fa-book benefit-icon"></i>
-            </div>
-            <h3 class="benefit-title">Resource Library</h3>
-            <p class="benefit-description">
-              Access our complete library of templates, guides, contracts, and industry resources to help you succeed in sync.
+              A 30-minute monthly video consultation call with Sync Summit Founder, Mark Frieser.
+              <span class="benefit-value">$1200 value</span>
             </p>
           </div>
         </div>
       </div>
       
-      <!-- What's Included -->
-      <div class="included-section">
-        <h2 class="section-title">What's Included</h2>
-        <ul class="included-list">
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Unlimited access to all online courses</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">50% discount on all live events</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Priority registration for listening sessions</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Complete video archive access</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Monthly member-only webinars</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Metadata style guide and templates</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Industry reports and insights</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Member directory and networking</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Consulting services discount</span>
-          </li>
-          <li class="included-item">
-            <div class="included-icon">
-              <i class="fas fa-check"></i>
-            </div>
-            <span class="included-text">Early access to new features</span>
-          </li>
-        </ul>
-      </div>
-      
       <!-- Pricing -->
       <div class="pricing-section">
         <div class="pricing-card">
-          <h2 class="price">999</h2>
-          <p class="price-period">per year</p>
-          <a href="#" class="price-cta">BECOME A MEMBER</a>
+          <div class="pricing-header">
+            <h2 class="price">2000</h2>
+            <p class="price-period">per year</p>
+            <p class="price-discount">$3000 OFF Standard Rate</p>
+          </div>
+          <div class="pricing-details">
+            <p class="standard-price">Standard Price: $5000</p>
+            <p class="offer-expires">Special offer expires April 20</p>
+          </div>
+          <a href="#" class="price-cta">SIGN UP NOW</a>
+          <p class="pricing-note">After signup, you'll receive a personal call from Sync Summit CEO Mark Frieser to discuss your membership details and answer any questions.</p>
         </div>
       </div>
     </div>
