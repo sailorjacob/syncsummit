@@ -83,46 +83,7 @@
       max-width: 100%;
     }
     
-    /* Page Transition Overlay */
-    .page-transition {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--bg-primary);
-      z-index: 9999;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
-    }
     
-    .page-transition.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    
-    .transition-loader {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .transition-loader::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--primary);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
     
     a {
       text-decoration: none;
@@ -1346,10 +1307,7 @@
   
 </head>
 <body>
-  <!-- Page Transition Overlay -->
-  <div class="page-transition">
-    <div class="transition-loader"></div>
-        </div>
+  
 
   <!-- Header -->
   <header>
@@ -1707,98 +1665,68 @@
 
   <!-- Scripts -->
   <script>
-    // Page Transition System
-    const pageTransition = document.querySelector('.page-transition');
+    // Mobile menu toggle with dropdown support
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
     
-    // Function to handle smooth page transitions
-    function smoothTransition(url) {
-      pageTransition.classList.add('active');
-      
-      setTimeout(() => {
-        window.location.href = url;
-      }, 300);
-    }
+    mobileMenuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-times');
+    });
     
-    // Add transition to all internal links
-    document.addEventListener('DOMContentLoaded', function() {
-      // Handle all internal navigation links
-      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
-      
-      internalLinks.forEach(link => {
-        // Skip hash links and download links
-        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
-          return;
-        }
-        
-        link.addEventListener('click', function(e) {
+    // Handle dropdown clicks on mobile
+    const dropdownToggles = document.querySelectorAll('.nav-item .nav-link');
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768 && this.querySelector('i')) {
           e.preventDefault();
-          const href = this.getAttribute('href');
-          smoothTransition(href);
-        });
-      });
-      
-      // Mobile menu toggle with dropdown support
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const navMenu = document.getElementById('nav-menu');
-      
-      mobileMenuToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
-      });
-      
-      // Handle dropdown clicks on mobile
-      const dropdownToggles = document.querySelectorAll('.nav-item .nav-link');
-      dropdownToggles.forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
-          if (window.innerWidth <= 768 && this.querySelector('i')) {
-            e.preventDefault();
-            const dropdown = this.nextElementSibling;
-            if (dropdown && dropdown.classList.contains('dropdown-menu')) {
-              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-              const icon = this.querySelector('i');
-              icon.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0)';
-            }
+          const dropdown = this.nextElementSibling;
+          if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            const icon = this.querySelector('i');
+            icon.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0)';
           }
-        });
-      });
-      
-      // Close menu when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!event.target.closest('.navbar')) {
-          navMenu.classList.remove('active');
-          const icon = mobileMenuToggle.querySelector('i');
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        }
-      });
-      
-      // Reset dropdowns on window resize
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768) {
-          const dropdowns = document.querySelectorAll('.dropdown-menu');
-          dropdowns.forEach(dropdown => {
-            dropdown.style.display = '';
-          });
-          const icons = document.querySelectorAll('.nav-link i');
-          icons.forEach(icon => {
-            icon.style.transform = '';
-          });
         }
       });
     });
-
-    // Mobile card description toggle
-    if (window.innerWidth <= 900) {
-      document.querySelectorAll('.card-toggle').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          var card = btn.closest('.content-card');
-          card.classList.toggle('expanded');
-          btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.navbar')) {
+        navMenu.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-times');
+      }
+    });
+    
+    // Reset dropdowns on window resize
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        const dropdowns = document.querySelectorAll('.dropdown-menu');
+        dropdowns.forEach(dropdown => {
+          dropdown.style.display = '';
         });
+        const icons = document.querySelectorAll('.nav-link i');
+        icons.forEach(icon => {
+          icon.style.transform = '';
+        });
+      }
+    });
+  });
+
+  // Mobile card description toggle
+  if (window.innerWidth <= 900) {
+    document.querySelectorAll('.card-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        var card = btn.closest('.content-card');
+        card.classList.toggle('expanded');
+        btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
       });
-    }
+    });
+  }
   </script>
 
   <!-- Sanity Integration -->

@@ -179,10 +179,7 @@
   </style>
 </head>
 <body>
-  <!-- Page Transition Overlay -->
-  <div class="page-transition">
-    <div class="transition-loader"></div>
-  </div>
+  
 
   <!-- Header -->
   <header>
@@ -299,37 +296,6 @@
   
   <!-- Scripts -->
   <script>
-    // Page Transition System
-    const pageTransition = document.querySelector('.page-transition');
-    
-    // Function to handle smooth page transitions
-    function smoothTransition(url) {
-      pageTransition.classList.add('active');
-      
-      setTimeout(() => {
-        window.location.href = url;
-      }, 300);
-    }
-    
-    // Add transition to all internal links
-    document.addEventListener('DOMContentLoaded', function() {
-      // Handle all internal navigation links
-      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
-      
-      internalLinks.forEach(link => {
-        // Skip hash links and download links
-        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
-          return;
-        }
-        
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const href = this.getAttribute('href');
-          smoothTransition(href);
-        });
-      });
-    });
-
     // Mobile menu toggle with dropdown support
     document.addEventListener('DOMContentLoaded', function() {
       const mobileMenuToggle = document.getElementById('mobile-menu-toggle');

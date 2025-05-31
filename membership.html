@@ -365,10 +365,7 @@
   </style>
 </head>
 <body class="membership-page">
-  <!-- Page Transition Overlay -->
-  <div class="page-transition">
-    <div class="transition-loader"></div>
-  </div>
+  
 
   <!-- Add loading message component -->
   <div class="loading-message" id="loading-message">
@@ -562,64 +559,7 @@
   <script>
     // Page Transition System
     const pageTransition = document.querySelector('.page-transition');
-    const loadingMessage = document.getElementById('loading-message');
-    
-    // Function to handle smooth page transitions
-    function smoothTransition(url) {
-      pageTransition.classList.add('active');
-      
-      setTimeout(() => {
-        window.location.href = url;
-      }, 300);
-    }
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      // Hide loading message on page load
-      if (loadingMessage) {
-        loadingMessage.classList.remove('active');
-      }
-      
-      // Function to show loading message
-      function showLoadingMessage() {
-        if (loadingMessage) {
-          loadingMessage.classList.add('active');
-          // Hide after 3 seconds
-          setTimeout(() => {
-            loadingMessage.classList.remove('active');
-          }, 3000);
-        }
-      }
-
-      // Handle all links
-      const allLinks = document.querySelectorAll('a');
-      
-      allLinks.forEach(link => {
-        // Skip hash links and download links
-        if (link.getAttribute('href')?.startsWith('#') || link.hasAttribute('download')) {
-          return;
-        }
-        
-        link.addEventListener('click', function(e) {
-          // Check if the link is dead (doesn't exist or is external)
-          const href = this.getAttribute('href');
-          if (!href || href.startsWith('http') || href === '#') {
-            e.preventDefault();
-            showLoadingMessage();
-            return;
-          }
-
-          // For internal links, show loading message before transition
-          if (href.startsWith('/') || href.endsWith('.html')) {
-            e.preventDefault();
-            showLoadingMessage();
-            setTimeout(() => {
-              smoothTransition(href);
-            }, 1000);
-          }
-        });
-      });
-      
-      // Mobile menu toggle with dropdown support
+    // Mobile menu toggle with dropdown support
       const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       
