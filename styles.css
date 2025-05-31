@@ -354,6 +354,25 @@ header {
   color: white;
 }
 
+/* Card toggle buttons - hide on desktop */
+.card-toggle {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .card-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    padding: 0.5rem 0;
+    text-align: left;
+  }
+}
+
 /* Button Styles */
 .btn {
   display: inline-block;
