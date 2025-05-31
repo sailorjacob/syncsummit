@@ -498,12 +498,70 @@
     .footer-content p {
       margin-bottom: 0;
     }
+
+    /* Add loading message styles */
+    .loading-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.9);
+      color: var(--neon-green);
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      text-align: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+      border: 1px solid var(--neon-green);
+    }
+
+    .loading-message.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .loading-message h3 {
+      color: var(--neon-yellow);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+    }
+
+    .loading-message p {
+      color: white;
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--neon-green);
+      border-top-color: var(--neon-yellow);
+      border-radius: 50%;
+      margin: 1rem auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
   </style>
 </head>
 <body>
   <!-- Page Transition Overlay -->
   <div class="page-transition">
     <div class="transition-loader"></div>
+  </div>
+
+  <!-- Add loading message component -->
+  <div class="loading-message" id="loading-message">
+    <h3>Loading from Haven Studio</h3>
+    <div class="loading-spinner"></div>
+    <p>Please wait while we prepare this content...</p>
   </div>
 
   <!-- Header -->
@@ -745,21 +803,44 @@
       }, 300);
     }
     
-    // Add transition to all internal links
     document.addEventListener('DOMContentLoaded', function() {
-      // Handle all internal navigation links
-      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      const loadingMessage = document.getElementById('loading-message');
       
-      internalLinks.forEach(link => {
+      // Function to show loading message
+      function showLoadingMessage() {
+        loadingMessage.classList.add('active');
+        // Hide after 3 seconds
+        setTimeout(() => {
+          loadingMessage.classList.remove('active');
+        }, 3000);
+      }
+
+      // Handle all links
+      const allLinks = document.querySelectorAll('a');
+      
+      allLinks.forEach(link => {
         // Skip hash links and download links
-        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+        if (link.getAttribute('href')?.startsWith('#') || link.hasAttribute('download')) {
           return;
         }
         
         link.addEventListener('click', function(e) {
-          e.preventDefault();
+          // Check if the link is dead (doesn't exist or is external)
           const href = this.getAttribute('href');
-          smoothTransition(href);
+          if (!href || href.startsWith('http') || href === '#') {
+            e.preventDefault();
+            showLoadingMessage();
+            return;
+          }
+
+          // For internal links, show loading message before transition
+          if (href.startsWith('/') || href.endsWith('.html')) {
+            e.preventDefault();
+            showLoadingMessage();
+            setTimeout(() => {
+              smoothTransition(href);
+            }, 1000);
+          }
         });
       });
       
