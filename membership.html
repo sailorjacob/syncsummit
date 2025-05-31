@@ -298,12 +298,12 @@
     }
 
     .membership-page .icon-banner {
-      margin: 2.5rem auto 0 auto;
-      max-width: 900px;
+      margin: 1.25rem auto 0 auto;
+      max-width: 420px;
       width: 100%;
       position: relative;
       overflow: hidden;
-      height: 3.5rem;
+      height: 2.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -316,12 +316,12 @@
     .membership-page .icon-track {
       display: flex;
       align-items: center;
-      gap: 2.5rem;
-      animation: icon-scroll 18s linear infinite;
+      gap: 1.1rem;
+      animation: membership-icon-scroll 18s linear infinite;
       will-change: transform;
     }
     .membership-page .icon-banner i {
-      font-size: 2rem;
+      font-size: 1.15rem;
       color: #222;
       opacity: 0.92;
       transition: transform 0.2s, opacity 0.2s, color 0.2s;
@@ -337,33 +337,33 @@
       content: '';
       position: absolute;
       top: 0;
-      width: 60px;
+      width: 30px;
       height: 100%;
       z-index: 2;
       pointer-events: none;
     }
     .membership-page .icon-banner::before {
       left: 0;
-      background: linear-gradient(to right, #fff 80%, rgba(255,255,255,0));
+      background: linear-gradient(90deg, #fff 80%, rgba(255,255,255,0));
     }
     .membership-page .icon-banner::after {
       right: 0;
-      background: linear-gradient(to left, #fff 80%, rgba(255,255,255,0));
+      background: linear-gradient(270deg, #fff 80%, rgba(255,255,255,0));
     }
-    @keyframes icon-scroll {
+    @keyframes membership-icon-scroll {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    @media (max-width: 900px) {
+    @media (max-width: 600px) {
       .membership-page .icon-banner {
         max-width: 98vw;
-        height: 2.5rem;
+        height: 1.5rem;
       }
       .membership-page .icon-track {
-        gap: 1.2rem;
+        gap: 0.7rem;
       }
       .membership-page .icon-banner i {
-        font-size: 1.5rem;
+        font-size: 0.95rem;
       }
     }
   </style>
