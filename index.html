@@ -80,6 +80,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      max-width: 100%;
     }
     
     /* Page Transition Overlay */
@@ -139,6 +140,7 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 1.5rem;
+      box-sizing: border-box;
     }
     
     
@@ -779,13 +781,13 @@
       
       .content-section {
         padding: 6.5rem 0 3rem;
-      }
-      
-      .section-title {
-        font-size: 2rem;
-      }
-      
-      .section-subtitle {
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .section-subtitle {
         font-size: 1rem;
       }
       
@@ -935,6 +937,8 @@
       padding: 5rem 0;
       background: var(--bg-secondary);
       border-top: 1px solid var(--border);
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      width: 100%;
     }
     
     .bottom-grid {
@@ -943,6 +947,8 @@
       gap: 3rem;
       max-width: 1200px;
       margin: 0 auto;
+      padding: 0 1.5rem;
+      width: 100%;
     }
     
     .column-title {
@@ -958,6 +964,7 @@
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
+      width: 100%;
     }
     
     .event-card {
@@ -970,6 +977,7 @@
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       border: 1px solid transparent;
+      width: 100%;
     }
     
     .event-card:hover {
@@ -1021,9 +1029,10 @@
     .activity-column {
       display: flex;
       flex-direction: column;
-        gap: 2rem;
-      }
-      
+      gap: 2rem;
+      width: 100%;
+    }
+    
     .search-wrapper {
       position: relative;
       margin-bottom: 1rem;
@@ -1119,16 +1128,15 @@
     .archive-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
     
     .archive-tag {
       background: var(--bg-primary);
-      color: var(--text-secondary);
       padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-size: 0.8125rem;
-      font-weight: 500;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
       transition: var(--transition);
       border: 1px solid var(--border);
     }
@@ -1145,6 +1153,7 @@
     .newsletter-column {
       display: flex;
       align-items: center;
+      width: 100%;
     }
     
     .newsletter-card {
@@ -1205,6 +1214,7 @@
       gap: 1rem;
       position: relative;
       z-index: 1;
+      width: 100%;
     }
     
     .newsletter-form input {
@@ -1214,6 +1224,7 @@
       font-size: 0.875rem;
       transition: var(--transition);
       background: rgba(255, 255, 255, 0.8);
+      width: 100%;
     }
     
     .newsletter-form input:focus {
@@ -1327,6 +1338,100 @@
     .content-card:nth-child(4)::after {
       background: linear-gradient(135deg, transparent 40%, rgba(252, 70, 107, 0.1) 100%);
     }
+
+    @media (max-width: 1024px) {
+      .bottom-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      
+      .newsletter-column {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .newsletter-column {
+        grid-column: span 1;
+      }
+      
+      .column-title {
+        margin-bottom: 1.5rem;
+      }
+      
+      .modern-posts li a {
+        flex-wrap: wrap;
+      }
+      
+      .post-date {
+        width: 100%;
+        margin-top: 0.5rem;
+        text-align: left;
+        margin-left: 3.5rem;
+      }
+      
+      section {
+        padding: 3rem 0;
+      }
+      
+      .newsletter-card {
+        padding: 1.5rem;
+      }
+      
+      .newsletter-card h3 {
+        font-size: 1.25rem;
+      }
+      
+      .newsletter-card p {
+        margin-bottom: 1.5rem;
+      }
+      
+      .newsletter-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      
+      .archive-tags {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 0.75rem;
+      }
+      
+      .column-title {
+        font-size: 1.25rem;
+      }
+      
+      section {
+        padding: 2rem 0;
+      }
+      
+      .bottom-section {
+        padding: 3rem 0;
+      }
+      
+      .event-card {
+        padding: 1rem;
+        gap: 1rem;
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .event-date {
+        margin-bottom: 0.5rem;
+      }
+    }
   </style>
   <!-- Shared styles -->
   <link rel="stylesheet" href="styles.css">
@@ -1343,9 +1448,9 @@
     <nav class="navbar">
       <div class="logo-section">
         <a href="/" class="logo">
-          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//syncred.png" alt="SyncSummit">
         </a>
-      </div>
+        </div>
       
       <div class="nav-menu" id="nav-menu">
         <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
