@@ -417,10 +417,7 @@
     }
     
     .card-description {
-      color: var(--text-secondary);
-      line-height: 1.7;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
     }
     
     .card-link {
@@ -1282,15 +1279,10 @@
         max-width: 100%;
       }
       .card-description {
-        display: none;
-        transition: max-height 0.3s ease;
-      }
-      .content-card.expanded .card-description {
-        display: block;
         margin-top: 0.5rem;
       }
       .card-toggle {
-        display: block;
+        display: none; /* Hide by default on desktop */
         background: none;
         border: none;
         color: #888;
@@ -1299,6 +1291,12 @@
         margin: 0.5rem 0 0 0;
         width: 100%;
         text-align: left;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .card-toggle {
+        display: block;
       }
     }
   </style>
@@ -1715,18 +1713,17 @@
         });
       }
     });
-  });
 
-  // Mobile card description toggle
-  if (window.innerWidth <= 900) {
-    document.querySelectorAll('.card-toggle').forEach(function(btn) {
-      btn.addEventListener('click', function(e) {
-        var card = btn.closest('.content-card');
-        card.classList.toggle('expanded');
-        btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
+    // Mobile card description toggle
+    if (window.innerWidth <= 900) {
+      document.querySelectorAll('.card-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          var card = btn.closest('.content-card');
+          card.classList.toggle('expanded');
+          btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
+        });
       });
-    });
-  }
+    }
   </script>
 
   <!-- Sanity Integration -->
