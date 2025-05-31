@@ -296,6 +296,43 @@
         font-size: 2rem;
       }
     }
+
+    .membership-page .icon-banner {
+      margin: 2.5rem auto 0 auto;
+      max-width: 900px;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border-radius: 2rem;
+      padding: 0.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 1;
+    }
+    .membership-page .icon-banner i {
+      font-size: 2rem;
+      color: #fff;
+      opacity: 0.92;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .membership-page .icon-banner i:hover {
+      transform: scale(1.15);
+      opacity: 1;
+    }
+    @media (max-width: 900px) {
+      .membership-page .icon-banner {
+        max-width: 98vw;
+        gap: 1.2rem;
+        padding: 0.5rem 0.5rem;
+      }
+      .membership-page .icon-banner i {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body class="membership-page">
@@ -377,6 +414,20 @@
           The Sync Summit Annual Membership
         </h1>
         <p class="page-subtitle">12 months of all our services for $2,000 – $3,000 off the standard rate</p>
+        <div class="icon-banner">
+          <i class="fab fa-spotify"></i>
+          <i class="fab fa-apple"></i>
+          <i class="fab fa-amazon"></i>
+          <i class="fab fa-youtube"></i>
+          <i class="fas fa-tv"></i>
+          <i class="fab fa-soundcloud"></i>
+          <i class="fas fa-film"></i>
+          <i class="fab fa-tiktok"></i>
+          <i class="fas fa-headphones"></i>
+          <i class="fab fa-google"></i>
+          <i class="fas fa-microphone"></i>
+          <i class="fab fa-facebook"></i>
+        </div>
       </div>
     </div>
   </section>
