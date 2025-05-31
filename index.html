@@ -21,30 +21,30 @@
       --primary-dark: #333333;
       --primary-light: #F5F5F5;
       
-      /* Card 1 - Coral/Pink/Yellow (Current) */
-      --gradient1-start: #FF6B6B;
-      --gradient1-mid: #FF8E53;
-      --gradient1-end: #FFE66D;
+      /* Updated Membership Section Colors */
+      --gradient1-start: #2C3E50;  /* Deep Blue */
+      --gradient1-mid: #3498DB;    /* Bright Blue */
+      --gradient1-end: #2980B9;    /* Rich Blue */
       
       /* Card 2 - Purple/Blue */
-      --gradient2-start: #667EEA;
-      --gradient2-mid: #764BA2;
-      --gradient2-end: #6B8DD6;
+      --gradient2-start: #8E44AD;  /* Deep Purple */
+      --gradient2-mid: #9B59B6;    /* Bright Purple */
+      --gradient2-end: #7D3C98;    /* Rich Purple */
       
       /* Card 3 - Teal/Green */
-      --gradient3-start: #11998E;
-      --gradient3-mid: #38EF7D;
-      --gradient3-end: #2AF598;
+      --gradient3-start: #16A085;  /* Deep Teal */
+      --gradient3-mid: #1ABC9C;    /* Bright Teal */
+      --gradient3-end: #138D75;    /* Rich Teal */
       
       /* Card 4 - Orange/Red */
-      --gradient4-start: #FC466B;
-      --gradient4-mid: #3F5EFB;
-      --gradient4-end: #FC466B;
+      --gradient4-start: #E67E22;  /* Deep Orange */
+      --gradient4-mid: #F39C12;    /* Bright Orange */
+      --gradient4-end: #D35400;    /* Rich Orange */
       
-      /* Hero Section - Sunset gradient */
-      --hero-gradient-start: #FA709A;
-      --hero-gradient-mid: #FEE140;
-      --hero-gradient-end: #FA709A;
+      /* Hero Section - Updated gradient */
+      --hero-gradient-start: #2C3E50;  /* Deep Blue */
+      --hero-gradient-mid: #3498DB;    /* Bright Blue */
+      --hero-gradient-end: #2980B9;    /* Rich Blue */
       
       --bg-primary: #FFFFFF;
       --bg-secondary: #FAFAFA;
@@ -290,30 +290,6 @@
       to {
         opacity: 1;
         transform: scale(1);
-      }
-    }
-    
-    .hero-equals {
-      font-size: 3rem;
-      background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 300;
-      margin: 0 0.5rem;
-      display: inline-block;
-      opacity: 0;
-      animation: rotateIn 0.6s ease-out 1.2s forwards;
-    }
-    
-    @keyframes rotateIn {
-      from {
-        opacity: 0;
-        transform: rotate(-180deg) scale(0);
-      }
-      to {
-        opacity: 1;
-        transform: rotate(0) scale(1);
       }
     }
     
@@ -1576,7 +1552,6 @@
       <div class="hero-content">
         <h1 class="hero-title">
           SYNC SUMMIT ANNUAL MEMBERSHIP
-          <span class="hero-equals">=</span>
         </h1>
         <p class="hero-subtitle">EVERYTHING SYNC SUMMIT AT ONE LOW RATE</p>
         
