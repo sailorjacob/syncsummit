@@ -73,6 +73,16 @@
       text-decoration: underline;
     }
     
+    /* Hide 'More' buttons on desktop, show only on mobile */
+    .blog-link.more-btn {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .blog-link.more-btn {
+        display: inline-flex;
+      }
+    }
+    
     /* Responsive styles */
     @media (max-width: 768px) {
       header {
@@ -259,6 +269,7 @@
             <h2 class="blog-title">The Future of Music Licensing in Streaming</h2>
             <p class="blog-excerpt">Exploring how streaming platforms are reshaping the landscape of music licensing and what it means for artists and rights holders.</p>
             <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="blog-link more-btn">More</a>
           </div>
         </div>
         
@@ -269,6 +280,7 @@
             <h2 class="blog-title">Metadata Best Practices for 2025</h2>
             <p class="blog-excerpt">A comprehensive guide to optimizing your music metadata for better discoverability and licensing opportunities.</p>
             <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="blog-link more-btn">More</a>
           </div>
         </div>
         
@@ -279,6 +291,7 @@
             <h2 class="blog-title">Sync Success Stories: Case Studies</h2>
             <p class="blog-excerpt">Real-world examples of successful music placements and the strategies that made them happen.</p>
             <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="blog-link more-btn">More</a>
           </div>
         </div>
       </div>
@@ -317,6 +330,12 @@
           icon.classList.remove('fa-times');
         }
       });
+    });
+    // Remove any loading/transition animation and loading modal/element if present
+    document.addEventListener('DOMContentLoaded', function() {
+      const loadingModal = document.getElementById('loading-modal');
+      if (loadingModal) loadingModal.remove();
+      document.body.classList.remove('page-transition');
     });
   </script>
 </body>

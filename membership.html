@@ -18,15 +18,19 @@
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    /* Membership-specific styles */
+    /* Page-specific styles - Scoped to membership page */
     .membership-page {
-      background-color: #fff;
+      /* Reset any inherited styles that might affect other pages */
+      --membership-primary: #00B4D8;  /* Soft neon blue */
+      --membership-primary-light: #90E0EF;
+      --membership-primary-dark: #0077B6;
+      --membership-accent: #FF61D2;  /* Soft neon pink */
+      --membership-accent-light: #FFB3E6;
+      --membership-accent-dark: #FF1493;
+      --membership-bg: #F8FAFC;  /* Very light blue-gray */
     }
     
-    /* Remove loading message styles */
-    
-    /* Hero Section */
-    .membership-hero {
+    .membership-page .membership-hero {
       background: #fff;
       padding: 8rem 0 4rem;
       text-align: center;
@@ -313,7 +317,6 @@
 </head>
 <body class="membership-page">
   
-
   <!-- Header -->
   <header>
     <nav class="navbar">
@@ -497,8 +500,9 @@
   
   <!-- Scripts -->
   <script>
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
     // Mobile menu toggle with dropdown support
-    document.addEventListener('DOMContentLoaded', function() {
       const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
       const navMenu = document.getElementById('nav-menu');
       
