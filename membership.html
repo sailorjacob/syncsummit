@@ -170,36 +170,86 @@
       position: relative;
       overflow: hidden;
       box-shadow: 0 4px 24px rgba(0, 180, 216, 0.08);
+      text-align: center;
+    }
+    
+    .membership-page .pricing-header {
+      margin-bottom: 2rem;
     }
     
     .membership-page .price {
-      font-size: 4rem;
+      font-size: 4.5rem;
       font-weight: 800;
       color: var(--membership-primary);
       margin-bottom: 0.5rem;
       position: relative;
       display: inline-block;
+      line-height: 1;
+    }
+    
+    .membership-page .price-period {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .membership-page .price-discount {
+      font-size: 1.125rem;
+      color: var(--membership-accent);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .membership-page .pricing-details {
+      margin-bottom: 2rem;
+      padding: 1rem;
+      background: var(--membership-bg);
+      border-radius: 12px;
+    }
+    
+    .membership-page .standard-price {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      text-decoration: line-through;
+      margin-bottom: 0.5rem;
+    }
+    
+    .membership-page .offer-expires {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-style: italic;
     }
     
     .membership-page .price-cta {
       display: inline-block;
       background: linear-gradient(135deg, var(--membership-primary), var(--membership-accent));
       color: white;
-      padding: 1rem 2.5rem;
+      padding: 1.25rem 3rem;
       border-radius: 12px;
       font-weight: 600;
-      text-transform: none;
-      letter-spacing: 0;
-      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 1.125rem;
       transition: all 0.3s ease;
       text-decoration: none;
       box-shadow: 0 4px 12px rgba(0, 180, 216, 0.15);
+      margin-bottom: 1.5rem;
+      width: 100%;
+      max-width: 280px;
     }
     
     .membership-page .price-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0, 180, 216, 0.2);
       background: linear-gradient(135deg, var(--membership-primary-dark), var(--membership-accent-dark));
+    }
+    
+    .membership-page .pricing-note {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      max-width: 280px;
+      margin: 0 auto;
     }
     
     /* Responsive styles */
@@ -361,7 +411,7 @@
       <div class="pricing-section">
         <div class="pricing-card">
           <div class="pricing-header">
-            <h2 class="price">2,000</h2>
+            <h2 class="price">$2,000</h2>
             <p class="price-period">per year</p>
             <p class="price-discount">$3,000 off standard rate</p>
           </div>
@@ -371,7 +421,7 @@
           </div>
           <a href="#" class="price-cta">Sign up now</a>
           <p class="pricing-note">After signup, you'll receive a personal call from Sync Summit CEO Mark Frieser to discuss your membership details and answer any questions.</p>
-    </div>
+        </div>
       </div>
     </div>
   </section>
