@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events | SyncSummit</title>
+  <meta name="description" content="SyncSummit events bring together the world's top music makers, technology companies and Music Supervisors to meet, learn and do business.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Share styles with main page -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Import navigation styles from index.html */
+    
+    
+    
+
+    /* Page-specific styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-secondary) 100%);
+      padding:  8rem 0 4rem;
+      text-align: center;
+      
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .events-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    
+    .event-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent);
+    }
+    
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .event-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      flex: 1;
+    }
+    
+    .event-date {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+    
+    .event-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    
+    .event-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .event-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .event-feature i {
+      color: var(--primary);
+    }
+    
+    .event-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-tertiary);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .footer-content p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .event-header {
+        flex-direction: column;
+      }
+      
+      .event-date {
+        width: fit-content;
+      }
+    }
+  
+    /* Page Transition Overlay */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .transition-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .transition-loader::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+  </div>
+
+
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+          </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">SyncSummit Events</h1>
+      <p class="page-subtitle">Bringing together the world's top music makers, technology companies and Music Supervisors to meet, learn and do business</p>
+    </div>
+  </section>
+  
+  <!-- Events -->
+  <section class="events-container">
+    <div class="container">
+      <!-- 2025 Sync Summit NY -->
+      <div class="event-card" id="2025-sync-summit">
+        <div class="event-header">
+          <h2 class="event-title">2025 Sync Summit NY & 2026 LA</h2>
+          <span class="event-date">NY: Sept 2025 | LA: Feb 2026</span>
+        </div>
+        <p class="event-description">
+          Join us for the ultimate music sync conference experience. Connect with top music supervisors, sync agents, and industry professionals. Get exclusive access to panels, workshops, listening sessions, and networking opportunities that will transform your sync career.
+        </p>
+        <div class="event-features">
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>In-Person & Online Options</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>50+ Expert Speakers</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Listening Sessions</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>1-on-1 Meetings</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a href="#" class="btn btn-primary">REGISTER NOW</a>
+          <a href="#" class="btn btn-secondary">VIEW AGENDA</a>
+        </div>
+      </div>
+      
+      <!-- AdSync Summit -->
+      <div class="event-card" id="2025-adsync-summit">
+        <div class="event-header">
+          <h2 class="event-title">2025 AdSync Summit</h2>
+          <span class="event-date">October 6-7, 2025</span>
+        </div>
+        <p class="event-description">
+          The premier conference focused on music in advertising, brands, and commercial campaigns. Learn from creative directors, music producers, and brand executives who've created the most memorable campaigns in advertising.
+        </p>
+        <div class="event-features">
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Online + In-Person</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Brand Case Studies</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Agency Networking</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Creative Workshops</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a href="#" class="btn btn-primary">REGISTER NOW</a>
+          <a href="#" class="btn btn-secondary">ONLINE AGENDA</a>
+        </div>
+      </div>
+      
+      <!-- Video Archives -->
+      <div class="event-card" id="video-archives">
+        <div class="event-header">
+          <h2 class="event-title">2025 Sync Summit NY + LA Video Archives</h2>
+          <span class="event-date">$299 Access</span>
+        </div>
+        <p class="event-description">
+          Get complete access to all recorded sessions, panels, and workshops from both the New York and Los Angeles Sync Summit events. Plus, gain access to our exclusive contact database of music supervisors and industry professionals who attended.
+        </p>
+        <div class="event-features">
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>100+ Hours of Content</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Contact Database Access</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Downloadable Resources</span>
+          </div>
+          <div class="event-feature">
+            <i class="fas fa-check-circle"></i>
+            <span>Lifetime Access</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a href="#" class="btn btn-primary">GET ACCESS NOW</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+
+    // Mobile menu toggle with dropdown support
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

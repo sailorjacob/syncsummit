@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulting | SyncSummit</title>
+  <meta name="description" content="SyncSummit consulting services help artists, composers, labels, and publishers succeed in music licensing and composition.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Share styles with main page -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Import navigation styles from index.html */
+    
+    
+    
+
+    /* Page-specific styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      padding:  8rem 0 4rem;
+      text-align: center;
+      
+      color: white;
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .page-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .consulting-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    
+    .intro-section {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .intro-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .service-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: var(--transition);
+      text-align: center;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+    
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--primary-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+    
+    .service-description {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    
+    .clients-section {
+      background: var(--bg-secondary);
+      padding: 3rem;
+      border-radius: 12px;
+      margin-bottom: 4rem;
+    }
+    
+    .clients-title {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 3rem;
+      color: var(--text-primary);
+    }
+    
+    .client-types {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+    
+    .client-type {
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    
+    .client-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    .client-label {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    
+    .cta-section {
+      background: var(--primary);
+      color: white;
+      padding: 4rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-text {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+    
+    .cta-button {
+      background: white;
+      color: var(--primary);
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-block;
+      transition: var(--transition);
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-tertiary);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .footer-content p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  
+    /* Page Transition Overlay */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .transition-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .transition-loader::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+  </div>
+
+
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+          </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">SyncSummit Consulting</h1>
+      <p class="page-subtitle">Expert guidance to help you succeed in music licensing and the sync business</p>
+    </div>
+  </section>
+  
+  <!-- Consulting Content -->
+  <section class="consulting-container">
+    <div class="container">
+      <!-- Introduction -->
+      <div class="intro-section">
+        <p class="intro-text">
+          Are you an artist, composer, label, publisher, management company, producer, music library, sync agency, tech or service provider looking to prepare, package and present your music to decision makers in TV, film, games, apps, brands and advertising? Then Sync Summit's consulting services can help you access the tools, best practices and contacts you need to succeed in music licensing and composition.
+        </p>
+      </div>
+      
+      <!-- Services Grid -->
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3 class="service-title">Music Catalog Optimization</h3>
+          <p class="service-description">
+            We help you organize, tag, and prepare your music catalog for maximum discoverability by music supervisors and sync agents.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3 class="service-title">Industry Connections</h3>
+          <p class="service-description">
+            Leverage our extensive network to connect with the right music supervisors, publishers, and decision-makers for your music.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3 class="service-title">Business Strategy</h3>
+          <p class="service-description">
+            Develop a comprehensive sync strategy tailored to your goals, including pricing, rights management, and revenue optimization.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-file-contract"></i>
+          </div>
+          <h3 class="service-title">Deal Navigation</h3>
+          <p class="service-description">
+            Expert guidance through sync licensing agreements, negotiations, and contracts to ensure you get the best terms possible.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-tags"></i>
+          </div>
+          <h3 class="service-title">Metadata Excellence</h3>
+          <p class="service-description">
+            Master the art of metadata to ensure your music is found, properly credited, and generates maximum revenue.
+          </p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-bullhorn"></i>
+          </div>
+          <h3 class="service-title">Pitching Mastery</h3>
+          <p class="service-description">
+            Learn how to craft compelling pitches that get your music noticed and selected for placements in media.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Who We Work With -->
+      <div class="clients-section">
+        <h2 class="clients-title">Who We Work With</h2>
+        <div class="client-types">
+          <div class="client-type">
+            <i class="fas fa-user client-icon"></i>
+            <div class="client-label">Artists & Composers</div>
+          </div>
+          <div class="client-type">
+            <i class="fas fa-building client-icon"></i>
+            <div class="client-label">Record Labels</div>
+          </div>
+          <div class="client-type">
+            <i class="fas fa-book client-icon"></i>
+            <div class="client-label">Publishers</div>
+          </div>
+          <div class="client-type">
+            <i class="fas fa-folder-open client-icon"></i>
+            <div class="client-label">Music Libraries</div>
+          </div>
+          <div class="client-type">
+            <i class="fas fa-users client-icon"></i>
+            <div class="client-label">Management Companies</div>
+          </div>
+          <div class="client-type">
+            <i class="fas fa-laptop client-icon"></i>
+            <div class="client-label">Tech Providers</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Call to Action -->
+      <div class="cta-section">
+        <h2 class="cta-title">Ready to Take Your Sync Business to the Next Level?</h2>
+        <p class="cta-text">
+          Let's discuss how we can help you achieve your music licensing goals
+        </p>
+        <a href="#" class="cta-button">Schedule a Consultation</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+        
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+
+    // Mobile menu toggle with dropdown support
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

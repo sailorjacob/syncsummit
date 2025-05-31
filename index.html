@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SyncSummit | Music+Media events, content and support.</title>
+  <meta name="description" content="Sync Summit connects music creators and supervisors through events, courses, and consulting to succeed in music licensing for TV, film, games, and advertising.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      /* Modern vibrant color palette */
+      --primary: #666666;      /* Medium grey */
+      --primary-dark: #333333;
+      --primary-light: #F5F5F5;
+      
+      /* Card 1 - Coral/Pink/Yellow (Current) */
+      --gradient1-start: #FF6B6B;
+      --gradient1-mid: #FF8E53;
+      --gradient1-end: #FFE66D;
+      
+      /* Card 2 - Purple/Blue */
+      --gradient2-start: #667EEA;
+      --gradient2-mid: #764BA2;
+      --gradient2-end: #6B8DD6;
+      
+      /* Card 3 - Teal/Green */
+      --gradient3-start: #11998E;
+      --gradient3-mid: #38EF7D;
+      --gradient3-end: #2AF598;
+      
+      /* Card 4 - Orange/Red */
+      --gradient4-start: #FC466B;
+      --gradient4-mid: #3F5EFB;
+      --gradient4-end: #FC466B;
+      
+      /* Hero Section - Sunset gradient */
+      --hero-gradient-start: #FA709A;
+      --hero-gradient-mid: #FEE140;
+      --hero-gradient-end: #FA709A;
+      
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #FAFAFA;
+      --bg-tertiary: #F0F0F0;
+      --text-primary: #2D2D2D;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --border: #E0E0E0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    
+    /* Page Transition Overlay */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .transition-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .transition-loader::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #FFF0F5 0%, #FFFAE6 100%);
+      padding: 4rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0;
+    }
+    
+    /* Animated Background Pattern */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, transparent 50%, rgba(250, 112, 154, 0.04) 50.5%, rgba(250, 112, 154, 0.04) 60%, transparent 60.5%),
+        radial-gradient(circle at 60% 20%, transparent 30%, rgba(254, 225, 64, 0.04) 30.5%, rgba(254, 225, 64, 0.04) 40%, transparent 40.5%),
+        radial-gradient(circle at 80% 60%, transparent 40%, rgba(250, 112, 154, 0.03) 40.5%, rgba(250, 112, 154, 0.03) 50%, transparent 50.5%);
+      animation: backgroundShift 30s ease-in-out infinite;
+    }
+    
+    @keyframes backgroundShift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-30px, -30px) rotate(120deg); }
+      66% { transform: translate(30px, -30px) rotate(240deg); }
+    }
+    
+    /* Scrolling Media Banner - Smaller and more dynamic */
+    .media-banner {
+      position: relative;
+      margin-top: 2rem;
+      padding: 1rem 0;
+      overflow: hidden;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .media-track {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      position: relative;
+    }
+    
+    .media-track::before,
+    .media-track::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    
+    .media-track::before {
+      left: 0;
+      background: linear-gradient(90deg, #FFFAE6 0%, transparent 100%);
+    }
+    
+    .media-track::after {
+      right: 0;
+      background: linear-gradient(90deg, transparent 0%, #FFFAE6 100%);
+    }
+    
+    .media-logos {
+      display: flex;
+      gap: 2.5rem;
+      animation: scrollLogos 25s linear infinite;
+      white-space: nowrap;
+    }
+    
+    .media-logo {
+      font-size: 1.75rem;
+      background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      opacity: 0.7;
+    }
+    
+    .media-logo:hover {
+      transform: scale(1.2) rotate(5deg);
+      opacity: 1;
+    }
+    
+    @keyframes scrollLogos {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    /* Hero Content - Updated positioning */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease-out 0.5s forwards;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fadeInScale 0.8s ease-out 0.8s forwards;
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .hero-equals {
+      font-size: 3rem;
+      background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 300;
+      margin: 0 0.5rem;
+      display: inline-block;
+      opacity: 0;
+      animation: rotateIn 0.6s ease-out 1.2s forwards;
+    }
+    
+    @keyframes rotateIn {
+      from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+      }
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 1.5s forwards;
+    }
+    
+    /* Main Layout */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    /* Modern Content Cards */
+    .content-section {
+      padding: 6.5rem 0 3rem;
+      background: var(--bg-primary);
+      position: relative;
+    }
+    
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.3s forwards;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+      perspective: 1000px;
+    }
+    
+    .content-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.5rem;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      opacity: 0;
+      animation: cardEntrance 0.8s ease-out forwards;
+    }
+    
+    .content-card:nth-child(1) { animation-delay: 0.1s; }
+    .content-card:nth-child(2) { animation-delay: 0.2s; }
+    .content-card:nth-child(3) { animation-delay: 0.3s; }
+    .content-card:nth-child(4) { animation-delay: 0.4s; }
+    
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+    
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      transform: translateX(-100%);
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .content-card:hover::before {
+      transform: translateX(0);
+    }
+    
+    .content-card::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border-radius: 20px;
+    }
+    
+    .content-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .content-card:hover::after {
+      opacity: 1;
+    }
+    
+    .card-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card-icon-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.3));
+      transform: translateX(-100%) translateY(-100%);
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .content-card:hover .card-icon-wrapper::before {
+      transform: translateX(100%) translateY(100%);
+    }
+    
+    .card-icon {
+      font-size: 1.75rem;
+      color: white;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+    
+    .content-card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .card-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      transition: color 0.3s ease;
+    }
+    
+    .content-card:hover .card-title {
+      color: var(--accent);
+    }
+    
+    .card-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      font-weight: 500;
+      font-size: 0.875rem;
+      transition: gap 0.3s ease;
+    }
+    
+    .card-link:hover {
+      gap: 1rem;
+    }
+    
+    .card-link i {
+      transition: transform 0.3s ease;
+    }
+    
+    .content-card:hover .card-link i {
+      animation: arrowBounce 0.6s ease-in-out;
+    }
+    
+    @keyframes arrowBounce {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+    }
+    
+    /* Floating Animation for Icons */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+      }
+      25% {
+        transform: translateY(-20px) translateX(10px) rotate(5deg);
+      }
+      50% {
+        transform: translateY(10px) translateX(-10px) rotate(-5deg);
+      }
+      75% {
+        transform: translateY(-10px) translateX(15px) rotate(3deg);
+      }
+    }
+    
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .sidebar-card {
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    
+    .sidebar-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+    
+    .sidebar-header {
+      background: var(--text-primary);
+      color: white;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.4;
+    }
+    
+    .sidebar-content {
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
+      color: white;
+      padding: 0.875rem 2.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.875rem;
+      transition: var(--transition-smooth);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(250, 112, 154, 0.3);
+    }
+    
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .btn-primary:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(250, 112, 154, 0.4);
+    }
+    
+    /* Search */
+    .search-box {
+      padding: 1.5rem;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.875rem;
+      transition: var(--transition);
+      background: var(--bg-secondary);
+    }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--hero-gradient-start);
+      background: var(--bg-primary);
+    }
+    
+    /* Recent Posts */
+    .recent-posts {
+      list-style: none;
+      padding: 1.5rem;
+    }
+    
+    .recent-posts li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .recent-posts li:last-child {
+      border-bottom: none;
+    }
+    
+    .recent-posts a {
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      transition: var(--transition);
+    }
+    
+    .recent-posts a:hover {
+      color: var(--hero-gradient-start);
+    }
+    
+    /* Archives */
+    .archives-header {
+      background: var(--text-primary);
+      color: white;
+      padding: 1rem 1.25rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-tertiary);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .footer-content p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .content-grid {
+      gap: 1.5rem;
+      }
+      
+      .bottom-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      
+      .events-column,
+      .activity-column,
+      .newsletter-column {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+      }
+      
+      .sidebar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        top: 10px;
+        width: 95%;
+      }
+      
+      .navbar {
+        height: 60px;
+        padding: 0 1rem;
+        border-radius: 30px;
+      }
+      
+      .logo-section {
+        margin-right: 1rem;
+        height: 80px;
+        margin-top: 0;
+        padding-top: 5px;
+      }
+      
+      .logo {
+        height: 80px;
+      }
+      
+      .nav-menu {
+        display: none;
+        position: fixed;
+        top: 80px;
+        left: 5%;
+        right: 5%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        border-radius: 20px;
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+        margin-left: 0;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .nav-link::after {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .content-section {
+        padding: 6.5rem 0 3rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero {
+        padding: 3rem 0;
+        min-height: 300px;
+      }
+      
+      .hero-title {
+        font-size: 1.75rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.125rem;
+      }
+      
+      .media-banner {
+        max-width: 90vw;
+      }
+      
+      .media-logo {
+        font-size: 1.5rem;
+      }
+      
+      .media-logos {
+      gap: 2rem;
+    }
+    
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .logo-section {
+        padding: 0 1.5rem;
+        padding-right: 2rem;
+      }
+      
+      .nav-item {
+        width: 100%;
+      }
+      
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+      opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-left: 1rem;
+        border-radius: 0;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 0.5rem 0;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        min-width: auto;
+        display: none;
+      }
+      
+      .nav-menu .nav-link {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .dropdown-menu .dropdown-item {
+        color: var(--text-secondary);
+        font-size: 0.825rem;
+        padding: 0.5rem 1rem 0.5rem 2rem;
+        text-transform: none;
+      }
+      
+      .dropdown-menu .dropdown-item:hover {
+        background-color: var(--bg-tertiary);
+        color: var(--primary);
+        padding-left: 2.5rem;
+      }
+      
+      .bottom-section {
+        padding: 3rem 0;
+      }
+      
+      .column-title {
+        font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      }
+      
+      .event-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .event-date {
+        width: 100px;
+      }
+      
+      .newsletter-card {
+        padding: 2rem;
+      }
+      
+      .newsletter-icon {
+        font-size: 2.5rem;
+      }
+      
+      .newsletter-card h3 {
+        font-size: 1.25rem;
+      }
+    }
+    
+    /* Loading skeleton for Sanity content */
+    .skeleton {
+      background: linear-gradient(90deg, var(--bg-tertiary) 25%, var(--bg-secondary) 50%, var(--bg-tertiary) 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+    }
+    
+    @keyframes loading {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+
+    /* Button Variants */
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--hero-gradient-start);
+      border: 2px solid var(--hero-gradient-start);
+      padding: 0.625rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.75rem;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    
+    .btn-secondary:hover {
+      background: var(--hero-gradient-start);
+      color: white;
+      transform: translateY(-1px);
+    }
+
+    /* Bottom Section - Modern 3-column layout */
+    .bottom-section {
+      padding: 5rem 0;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+    }
+    
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .column-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    /* Events Column */
+    .events-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .event-card {
+      background: var(--bg-primary);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+    
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--gradient2-start);
+    }
+    
+    .event-date {
+      background: linear-gradient(135deg, var(--gradient2-start), var(--gradient2-end));
+      color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      min-width: 80px;
+      box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+    }
+    
+    .event-date .month {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .event-date .day {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-top: 0.25rem;
+    }
+    
+    .event-info h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .event-info p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+    
+    /* Activity Column */
+    .activity-column {
+      display: flex;
+      flex-direction: column;
+        gap: 2rem;
+      }
+      
+    .search-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    
+    .modern-search {
+      width: 100%;
+      padding: 1rem 3rem 1rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      transition: var(--transition);
+      background: var(--bg-primary);
+    }
+    
+    .modern-search:focus {
+      outline: none;
+      border-color: var(--hero-gradient-start);
+      box-shadow: 0 0 0 3px rgba(250, 112, 154, 0.1);
+    }
+    
+    .search-icon {
+      position: absolute;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+    
+    .section-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+    }
+    
+    .modern-posts {
+      list-style: none;
+      display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      
+    .modern-posts li a {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--bg-primary);
+      border-radius: 12px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .modern-posts li a:hover {
+      background: var(--bg-tertiary);
+      transform: translateX(4px);
+    }
+    
+    .post-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    
+    .post-title {
+      flex: 1;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+    
+    .post-date {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+    }
+    
+    /* Archives */
+    .archives-section {
+      margin-top: 1rem;
+    }
+    
+    .archive-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    
+    .archive-tag {
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+    
+    .archive-tag:hover {
+      background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        color: white;
+      border-color: transparent;
+      transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(255, 107, 107, 0.3);
+    }
+    
+    /* Newsletter Column */
+    .newsletter-column {
+      display: flex;
+      align-items: center;
+    }
+    
+    .newsletter-card {
+      background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      width: 100%;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .newsletter-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.08) 0%, transparent 70%);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    
+    .newsletter-icon {
+      font-size: 3rem;
+      color: var(--hero-gradient-start);
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .newsletter-card h3 {
+        font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .newsletter-card p {
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .newsletter-form input {
+      padding: 1rem 1.5rem;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      transition: var(--transition);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+    }
+    
+    .newsletter-card small {
+      display: block;
+      margin-top: 1rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Main Layout - now hidden since we have the new bottom section */
+    .main-layout {
+      display: none;
+    }
+
+    /* Card-specific gradients */
+    .content-card:nth-child(1) .card-icon-wrapper {
+      background: linear-gradient(135deg, var(--gradient1-start), var(--gradient1-mid), var(--gradient1-end));
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    .content-card:nth-child(2) .card-icon-wrapper {
+      background: linear-gradient(135deg, var(--gradient2-start), var(--gradient2-mid), var(--gradient2-end));
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .content-card:nth-child(3) .card-icon-wrapper {
+      background: linear-gradient(135deg, var(--gradient3-start), var(--gradient3-mid), var(--gradient3-end));
+      box-shadow: 0 4px 15px rgba(17, 153, 142, 0.3);
+    }
+    
+    .content-card:nth-child(4) .card-icon-wrapper {
+      background: linear-gradient(135deg, var(--gradient4-start), var(--gradient4-mid), var(--gradient4-end));
+      box-shadow: 0 4px 15px rgba(252, 70, 107, 0.3);
+    }
+    
+    /* Card-specific hover borders */
+    .content-card:nth-child(1)::before {
+      background: linear-gradient(90deg, var(--gradient1-start), var(--gradient1-mid), var(--gradient1-end));
+    }
+    
+    .content-card:nth-child(2)::before {
+      background: linear-gradient(90deg, var(--gradient2-start), var(--gradient2-mid), var(--gradient2-end));
+    }
+    
+    .content-card:nth-child(3)::before {
+      background: linear-gradient(90deg, var(--gradient3-start), var(--gradient3-mid), var(--gradient3-end));
+    }
+    
+    .content-card:nth-child(4)::before {
+      background: linear-gradient(90deg, var(--gradient4-start), var(--gradient4-mid), var(--gradient4-end));
+    }
+    
+    /* Card-specific hover shadows */
+    .content-card:nth-child(1):hover {
+      box-shadow: 
+        0 20px 40px -15px rgba(255, 107, 107, 0.2),
+        0 0 0 1px rgba(255, 107, 107, 0.1);
+    }
+    
+    .content-card:nth-child(2):hover {
+      box-shadow: 
+        0 20px 40px -15px rgba(102, 126, 234, 0.2),
+        0 0 0 1px rgba(102, 126, 234, 0.1);
+    }
+    
+    .content-card:nth-child(3):hover {
+      box-shadow: 
+        0 20px 40px -15px rgba(17, 153, 142, 0.2),
+        0 0 0 1px rgba(17, 153, 142, 0.1);
+    }
+    
+    .content-card:nth-child(4):hover {
+      box-shadow: 
+        0 20px 40px -15px rgba(252, 70, 107, 0.2),
+        0 0 0 1px rgba(252, 70, 107, 0.1);
+    }
+    
+    /* Card link colors */
+    .content-card:nth-child(1) .card-link { color: var(--gradient1-start); }
+    .content-card:nth-child(2) .card-link { color: var(--gradient2-start); }
+    .content-card:nth-child(3) .card-link { color: var(--gradient3-start); }
+    .content-card:nth-child(4) .card-link { color: var(--gradient4-start); }
+    
+    /* Title hover colors */
+    .content-card:nth-child(1):hover .card-title { color: var(--gradient1-start); }
+    .content-card:nth-child(2):hover .card-title { color: var(--gradient2-start); }
+    .content-card:nth-child(3):hover .card-title { color: var(--gradient3-start); }
+    .content-card:nth-child(4):hover .card-title { color: var(--gradient4-start); }
+
+    /* Card-specific after effects */
+    .content-card:nth-child(1)::after {
+      background: linear-gradient(135deg, transparent 40%, rgba(255, 107, 107, 0.1) 100%);
+    }
+    
+    .content-card:nth-child(2)::after {
+      background: linear-gradient(135deg, transparent 40%, rgba(102, 126, 234, 0.1) 100%);
+    }
+    
+    .content-card:nth-child(3)::after {
+      background: linear-gradient(135deg, transparent 40%, rgba(17, 153, 142, 0.1) 100%);
+    }
+    
+    .content-card:nth-child(4)::after {
+      background: linear-gradient(135deg, transparent 40%, rgba(252, 70, 107, 0.1) 100%);
+    }
+  </style>
+  <!-- Shared styles -->
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+        </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+      </div>
+      </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+      </div>
+    </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+        </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+      </nav>
+  </header>
+
+  <!-- Main Content - Everything You Need Section -->
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Everything You Need for Sync Success</h2>
+        <p class="section-subtitle">Comprehensive resources, expert guidance, and powerful connections to help you thrive in the music licensing industry</p>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Sync Summit Courses -->
+        <div class="content-card">
+          <div class="card-icon-wrapper">
+            <i class="fas fa-graduation-cap card-icon"></i>
+                </div>
+          <h3 class="card-title">Sync Summit Courses</h3>
+          <p class="card-description">
+            Deep dive into the business of music and media with courses taught by industry experts. Learn from creators, music supervisors, and sync agents who share their first-hand knowledge.
+          </p>
+          <a href="/courses.html" class="card-link">
+            Explore Courses <i class="fas fa-arrow-right"></i>
+          </a>
+                </div>
+
+        <!-- Sync Summits - Online All The Time -->
+        <div class="content-card">
+          <div class="card-icon-wrapper">
+            <i class="fas fa-globe card-icon"></i>
+                </div>
+          <h3 class="card-title">Global Sync Events</h3>
+          <p class="card-description">
+            Connect with the world's top music makers, technology companies, and Music Supervisors. We personally connect you and your music to opportunities in sync, music, and media.
+          </p>
+          <a href="/events.html" class="card-link">
+            View Events <i class="fas fa-arrow-right"></i>
+          </a>
+                </div>
+
+        <!-- Sync Summit Consulting -->
+        <div class="content-card">
+          <div class="card-icon-wrapper">
+            <i class="fas fa-compass card-icon"></i>
+              </div>
+          <h3 class="card-title">Expert Consulting</h3>
+          <p class="card-description">
+            Get personalized guidance to prepare, package, and present your music to decision makers in TV, film, games, apps, brands, and advertising. Access the tools and contacts you need.
+          </p>
+          <a href="/consulting.html" class="card-link">
+            Get Started <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <!-- Sync Summit Intelligence -->
+        <div class="content-card">
+          <div class="card-icon-wrapper">
+            <i class="fas fa-lightbulb card-icon"></i>
+          </div>
+          <h3 class="card-title">Industry Intelligence</h3>
+          <p class="card-description">
+            Stay ahead with our industry reports, key data insights, and exclusive content. Access the knowledge that gives you a competitive edge in the sync marketplace.
+          </p>
+          <a href="/articles.html" class="card-link">
+            Learn More <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+              </div>
+            </div>
+          </section>
+
+  <!-- Hero Section with Scrolling Media Logos -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          SYNC SUMMIT ANNUAL MEMBERSHIP
+          <span class="hero-equals">=</span>
+        </h1>
+        <p class="hero-subtitle">EVERYTHING SYNC SUMMIT AT ONE LOW RATE</p>
+        
+        <!-- Scrolling Media Logo Banner -->
+        <div class="media-banner">
+          <div class="media-track">
+            <div class="media-logos">
+              <i class="fab fa-spotify media-logo"></i>
+              <i class="fab fa-apple media-logo"></i>
+              <i class="fab fa-amazon media-logo"></i>
+              <i class="fab fa-youtube media-logo"></i>
+              <i class="fas fa-tv media-logo"></i>
+              <i class="fab fa-soundcloud media-logo"></i>
+              <i class="fas fa-film media-logo"></i>
+              <i class="fab fa-tiktok media-logo"></i>
+              <i class="fas fa-headphones media-logo"></i>
+              <i class="fab fa-google media-logo"></i>
+              <i class="fas fa-microphone media-logo"></i>
+              <i class="fab fa-facebook media-logo"></i>
+              <!-- Duplicate for seamless loop -->
+              <i class="fab fa-spotify media-logo"></i>
+              <i class="fab fa-apple media-logo"></i>
+              <i class="fab fa-amazon media-logo"></i>
+              <i class="fab fa-youtube media-logo"></i>
+              <i class="fas fa-tv media-logo"></i>
+              <i class="fab fa-soundcloud media-logo"></i>
+              <i class="fas fa-film media-logo"></i>
+              <i class="fab fa-tiktok media-logo"></i>
+              <i class="fas fa-headphones media-logo"></i>
+              <i class="fab fa-google media-logo"></i>
+              <i class="fas fa-microphone media-logo"></i>
+              <i class="fab fa-facebook media-logo"></i>
+                  </div>
+                </div>
+              </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bottom Section -->
+  <section class="bottom-section">
+    <div class="container">
+      <div class="bottom-grid">
+        <!-- Events Column -->
+        <div class="events-column">
+          <h3 class="column-title">Upcoming Events</h3>
+          
+          <!-- LA Summit Registration -->
+          <div class="event-card">
+            <div class="event-date">
+              <span class="month">FEB</span>
+              <span class="day">4</span>
+                  </div>
+            <div class="event-info">
+              <h4>2026 LA Sync Summit</h4>
+              <p>In-Person + Online Experience</p>
+              <a href="#" class="btn-secondary">Register Now</a>
+                </div>
+              </div>
+              
+          <!-- AdSync Summit Registration -->
+          <div class="event-card">
+            <div class="event-date">
+              <span class="month">OCT</span>
+              <span class="day">6-7</span>
+                  </div>
+            <div class="event-info">
+              <h4>AdSync Summit</h4>
+              <p>Online + In Person Event</p>
+              <a href="#" class="btn-secondary">Register Now</a>
+                </div>
+              </div>
+              
+          <!-- Listening Sessions -->
+          <div class="event-card">
+            <div class="event-date">
+              <span class="month">JUN</span>
+              <span class="day">29</span>
+                  </div>
+            <div class="event-info">
+              <h4>Listening Sessions</h4>
+              <p>Josh Rabinowitz Session</p>
+              <a href="#" class="btn-secondary">Learn More</a>
+                </div>
+              </div>
+            </div>
+        
+        <!-- Recent Activity Column -->
+        <div class="activity-column">
+          <h3 class="column-title">Recent Activity</h3>
+          
+          <!-- Search Box -->
+          <div class="search-wrapper">
+            <input type="search" class="modern-search" placeholder="Search content..." />
+            <i class="fas fa-search search-icon"></i>
+              </div>
+              
+          <!-- Recent Posts -->
+          <div class="recent-section">
+            <h4 class="section-label">Latest Posts</h4>
+            <ul class="modern-posts" id="recent-posts">
+              <li>
+                <a href="#">
+                  <span class="post-icon"><i class="fas fa-video"></i></span>
+                  <span class="post-title">Links to LA Summit Video Archives</span>
+                  <span class="post-date">2 days ago</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <span class="post-icon"><i class="fas fa-music"></i></span>
+                  <span class="post-title">LA Sync Summit Disco Upload Links</span>
+                  <span class="post-date">5 days ago</span>
+                </a>
+              </li>
+            </ul>
+              </div>
+              
+          <!-- Archives -->
+          <div class="archives-section">
+            <h4 class="section-label">Archives</h4>
+            <div class="archive-tags">
+              <a href="#" class="archive-tag">2025</a>
+              <a href="#" class="archive-tag">2024</a>
+              <a href="#" class="archive-tag">2023</a>
+              <a href="#" class="archive-tag">Videos</a>
+              <a href="#" class="archive-tag">Podcasts</a>
+              </div>
+            </div>
+        </div>
+        
+        <!-- Newsletter Column -->
+        <div class="newsletter-column">
+          <div class="newsletter-card">
+            <i class="fas fa-envelope-open-text newsletter-icon"></i>
+            <h3>Stay in Sync</h3>
+            <p>Get the latest industry insights, event updates, and sync opportunities delivered to your inbox.</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Enter your email" required />
+              <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+            <small>Join 10,000+ music professionals</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="main-layout">
+        <!-- Sidebar -->
+    <aside class="sidebar">
+      <!-- LA Summit Registration -->
+      <div class="sidebar-card">
+            <div class="sidebar-header">
+          REGISTER FOR OUR 2026 LA SYNC SUMMIT – FEBRUARY 4, IN-PERSON + ONLINE
+            </div>
+            <div class="sidebar-content">
+          <a href="#" class="btn-primary">REGISTER NOW</a>
+            </div>
+          </div>
+          
+      <!-- AdSync Summit Registration -->
+      <div class="sidebar-card">
+            <div class="sidebar-header">
+          REGISTER FOR THE ADSYNC SUMMIT. ONLINE + IN PERSON OCTOBER 6-7
+            </div>
+            <div class="sidebar-content">
+          <a href="#" class="btn-primary">REGISTER NOW</a>
+            </div>
+          </div>
+          
+      <!-- Listening Sessions -->
+      <div class="sidebar-card">
+            <div class="sidebar-header">
+          UPCOMING LISTENING SESSIONS
+            </div>
+            <div class="sidebar-content">
+          <a href="#" class="btn-primary">REGISTER NOW</a>
+            </div>
+          </div>
+          
+      <!-- Search -->
+      <div class="sidebar-card">
+        <div class="search-box">
+          <input type="search" class="search-input" placeholder="Search..." />
+            </div>
+          </div>
+          
+          <!-- Recent Posts -->
+      <div class="sidebar-card">
+            <div class="sidebar-header">
+          RECENT POSTS
+            </div>
+        <ul class="recent-posts" id="recent-posts">
+                <li><a href="#">Links to LA Summit Video Archives</a></li>
+                <li><a href="#">LA Sync Summit Disco Upload Links</a></li>
+              </ul>
+            </div>
+
+      <!-- Archives -->
+      <div class="sidebar-card">
+        <div class="archives-header">
+          ARCHIVES
+          </div>
+        </div>
+    </aside>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/contact">Contact Us</a>
+          </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+        </div>
+        </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+      // Mobile menu toggle with dropdown support
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Handle dropdown clicks on mobile
+      const dropdownToggles = document.querySelectorAll('.nav-item .nav-link');
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768 && this.querySelector('i')) {
+            e.preventDefault();
+            const dropdown = this.nextElementSibling;
+            if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+              const icon = this.querySelector('i');
+              icon.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0)';
+            }
+          }
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+      
+      // Reset dropdowns on window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          const dropdowns = document.querySelectorAll('.dropdown-menu');
+          dropdowns.forEach(dropdown => {
+            dropdown.style.display = '';
+          });
+          const icons = document.querySelectorAll('.nav-link i');
+          icons.forEach(icon => {
+            icon.style.transform = '';
+          });
+        }
+      });
+    });
+  </script>
+
+  <!-- Sanity Integration -->
+  <script type="module">
+    // Import Sanity client
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@sanity/client@latest/+esm';
+
+    // Sanity configuration
+    const client = createClient({
+      projectId: 'your-project-id', // Replace with actual project ID from syncsummit.sanity.studio
+        dataset: 'production',
+      apiVersion: '2025-01-01',
+        useCdn: true
+    });
+
+    // GROQ queries
+    const queries = {
+      homepage: `*[_type == "homepage"][0] {
+        heroTitle,
+        heroSubtitle,
+        contentCards[] {
+          title,
+          description,
+          icon
+        }
+      }`,
+      recentPosts: `*[_type == "post"] | order(publishedAt desc) [0...5] {
+        title,
+        slug
+      }`,
+      events: `*[_type == "event"] | order(date asc) [0...3] {
+        title,
+        date,
+        registrationLink
+      }`
+    };
+
+    // Fetch and populate content
+    async function loadSanityContent() {
+      try {
+        // Fetch homepage content
+        const homepage = await client.fetch(queries.homepage);
+        
+        if (homepage) {
+          // Update hero content
+          if (homepage.heroTitle) {
+            document.querySelector('.hero-title').innerHTML = homepage.heroTitle;
+          }
+          if (homepage.heroSubtitle) {
+            document.querySelector('.hero-subtitle').textContent = homepage.heroSubtitle;
+          }
+          
+          // Update content cards
+          if (homepage.contentCards) {
+            const cards = document.querySelectorAll('.content-card');
+            homepage.contentCards.forEach((card, index) => {
+              if (cards[index]) {
+                cards[index].querySelector('.card-title').textContent = card.title;
+                cards[index].querySelector('.card-description').textContent = card.description;
+              }
+            });
+          }
+        }
+        
+        // Fetch recent posts
+        const recentPosts = await client.fetch(queries.recentPosts);
+        if (recentPosts) {
+          const recentPostsList = document.getElementById('recent-posts');
+          recentPostsList.innerHTML = recentPosts.map(post => 
+            `<li><a href="/blog/${post.slug.current}">${post.title}</a></li>`
+          ).join('');
+        }
+        
+        // Fetch events for sidebar
+        const events = await client.fetch(queries.events);
+        if (events && events.length > 0) {
+          // Update event registration cards
+          const sidebarCards = document.querySelectorAll('.sidebar-card');
+          events.forEach((event, index) => {
+            if (sidebarCards[index]) {
+              const header = sidebarCards[index].querySelector('.sidebar-header');
+              if (header) {
+                header.textContent = event.title;
+              }
+            }
+          });
+        }
+        
+      } catch (error) {
+        console.error('Error fetching Sanity content:', error);
+        // Fallback to static content
+      }
+    }
+
+    // Initialize content loading
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadSanityContent);
+    } else {
+      loadSanityContent();
+    }
+
+    // Real-time preview support
+    if (window.location.hostname === 'localhost') {
+      // Enable live preview in development
+      client.listen(queries.homepage).subscribe(update => {
+        console.log('Content updated:', update);
+        loadSanityContent();
+      });
+    }
+  </script>
+</body>
+</html> 

@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annual Membership | SyncSummit</title>
+  <meta name="description" content="Get everything Sync Summit has to offer at one low annual rate. Access all courses, events, and resources with your membership.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Share styles with main page -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Page-specific styles */
+    .membership-hero {
+      background: linear-gradient(135deg, #ffffff 0%, rgba(250, 112, 154, 0.08) 50%, rgba(102, 126, 234, 0.08) 100%);
+      padding: 8rem 0 4rem;
+      text-align: center;
+      color: var(--text-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Animated Background Pattern */
+    .membership-hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, transparent 50%, rgba(255, 107, 107, 0.05) 50.5%, rgba(255, 107, 107, 0.05) 60%, transparent 60.5%),
+        radial-gradient(circle at 60% 20%, transparent 30%, rgba(102, 126, 234, 0.05) 30.5%, rgba(102, 126, 234, 0.05) 40%, transparent 40.5%),
+        radial-gradient(circle at 80% 60%, transparent 40%, rgba(17, 153, 142, 0.04) 40.5%, rgba(17, 153, 142, 0.04) 50%, transparent 50.5%);
+      animation: backgroundShift 30s ease-in-out infinite;
+      z-index: 1;
+      opacity: 0.8;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease-out 0.5s forwards;
+    }
+    
+    .page-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      opacity: 0;
+      animation: fadeInScale 0.8s ease-out 0.8s forwards;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .page-equals {
+      font-size: 3rem;
+      font-weight: 300;
+      margin: 0 0.5rem;
+      display: inline-block;
+      opacity: 0;
+      animation: rotateIn 0.6s ease-out 1.2s forwards;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .page-subtitle {
+      font-size: 1.75rem;
+      opacity: 0;
+      max-width: 700px;
+      margin: 1.5rem auto 0;
+      animation: fadeInUp 0.8s ease-out 1.5s forwards;
+      color: var(--text-secondary);
+    }
+    
+    .membership-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem;
+    }
+    
+    /* Pricing Section */
+    .pricing-section {
+      text-align: center;
+      margin-top: 6rem;
+      margin-bottom: 5rem;
+      position: relative;
+      padding-top: 2rem;
+    }
+    
+    .pricing-section::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(180deg, rgba(255, 107, 107, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+      z-index: -1;
+    }
+    
+    .pricing-card {
+      background: white;
+      border: 2px solid transparent;
+      border-radius: 28px;
+      padding: 3.5rem;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      transform: translateY(20px);
+      opacity: 0;
+      animation: cardEntrance 1s ease-out 0.3s forwards;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+    }
+    
+    .pricing-card::after {
+      content: 'BEST VALUE';
+      position: absolute;
+      top: 25px;
+      right: -35px;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      color: white;
+      padding: 0.5rem 3.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      transform: rotate(45deg);
+      box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    
+    .price {
+      font-size: 4.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .price::before {
+      content: '$';
+      position: absolute;
+      left: -20px;
+      top: 15px;
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+    
+    .price-period {
+      color: var(--text-secondary);
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+    
+    .price-cta {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      color: white;
+      padding: 1.125rem 3.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 1rem;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    }
+    
+    .price-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    
+    .price-cta:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .price-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+    }
+    
+    /* Benefits Section */
+    .benefits-section {
+      margin-top: 6rem;
+      position: relative;
+    }
+    
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      font-weight: 800;
+    }
+    
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 5rem;
+      perspective: 1000px;
+    }
+    
+    .benefit-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 24px;
+      text-align: center;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      opacity: 0;
+      animation: cardEntrance 0.8s ease-out forwards;
+      border: 2px solid transparent;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+    }
+    
+    .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+    .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+    .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+    .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+    .benefit-card:nth-child(5) { animation-delay: 0.5s; }
+    .benefit-card:nth-child(6) { animation-delay: 0.6s; }
+    
+    .benefit-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      position: relative;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2), 0 0 0 6px rgba(255, 107, 107, 0.05);
+      transition: var(--transition);
+    }
+    
+    .benefit-card:nth-child(1) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3), 0 0 0 6px rgba(255, 107, 107, 0.1);
+    }
+    
+    .benefit-card:nth-child(2) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3), 0 0 0 6px rgba(102, 126, 234, 0.1);
+    }
+    
+    .benefit-card:nth-child(3) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(17, 153, 142, 0.3), 0 0 0 6px rgba(17, 153, 142, 0.1);
+    }
+    
+    .benefit-card:nth-child(4) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(252, 70, 107, 0.3), 0 0 0 6px rgba(252, 70, 107, 0.1);
+    }
+    
+    .benefit-card:nth-child(5) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3), 0 0 0 6px rgba(102, 126, 234, 0.1);
+    }
+    
+    .benefit-card:nth-child(6) .benefit-icon-wrapper {
+      box-shadow: 0 0 0 2px rgba(17, 153, 142, 0.3), 0 0 0 6px rgba(17, 153, 142, 0.1);
+    }
+    
+    .benefit-card:hover .benefit-icon-wrapper {
+      transform: scale(1.1);
+    }
+    
+    .benefit-icon {
+      font-size: 2rem;
+      color: var(--text-primary);
+      transition: transform 0.3s ease;
+    }
+    
+    .benefit-card:hover .benefit-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    .benefit-card:nth-child(1):hover .benefit-icon { color: rgba(255, 107, 107, 1); }
+    .benefit-card:nth-child(2):hover .benefit-icon { color: rgba(102, 126, 234, 1); }
+    .benefit-card:nth-child(3):hover .benefit-icon { color: rgba(17, 153, 142, 1); }
+    .benefit-card:nth-child(4):hover .benefit-icon { color: rgba(252, 70, 107, 1); }
+    .benefit-card:nth-child(5):hover .benefit-icon { color: rgba(102, 126, 234, 1); }
+    .benefit-card:nth-child(6):hover .benefit-icon { color: rgba(17, 153, 142, 1); }
+    
+    .benefit-title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+      transition: color 0.3s ease;
+    }
+    
+    .benefit-description {
+      color: var(--text-secondary);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+    
+    /* What's Included Section */
+    .included-section {
+      background: white;
+      padding: 4rem;
+      border-radius: 28px;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+      border: 2px solid transparent;
+      background-image: linear-gradient(white, white), 
+                        linear-gradient(135deg, rgba(255, 107, 107, 0.5), rgba(102, 126, 234, 0.5));
+      background-origin: border-box;
+      background-clip: padding-box, border-box;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .included-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 107, 107, 0.03) 0%, transparent 70%);
+      animation: pulse 5s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.3; }
+      50% { transform: scale(1.1); opacity: 0.5; }
+    }
+    
+    .included-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.75rem;
+      list-style: none;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .included-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .included-item:hover {
+      transform: translateX(5px);
+    }
+    
+    .included-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.875rem;
+      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    }
+    
+    .included-text {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* Animations */
+    @keyframes backgroundShift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      33% { transform: translate(-30px, -30px) rotate(120deg); }
+      66% { transform: translate(30px, -30px) rotate(240deg); }
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    @keyframes rotateIn {
+      from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+      }
+    }
+    
+    @keyframes cardEntrance {
+      from {
+        opacity: 0;
+        transform: translateY(30px) rotateX(-10deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+      }
+    }
+    
+    /* Mobile styles */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2.25rem;
+      }
+      
+      .page-subtitle {
+        font-size: 1.25rem;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .pricing-card {
+        padding: 2.5rem 1.5rem;
+      }
+      
+      .price {
+        font-size: 3.5rem;
+      }
+      
+      .included-section {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .membership-hero {
+        padding: 7rem 0 3rem;
+      }
+      
+      .page-title {
+        font-size: 1.875rem;
+      }
+      
+      .membership-container {
+        padding: 3rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+          </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- Page Hero -->
+  <section class="membership-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="page-title">
+          SYNC SUMMIT ANNUAL MEMBERSHIP
+          <span class="page-equals">=</span>
+        </h1>
+        <p class="page-subtitle">EVERYTHING SYNC SUMMIT AT ONE LOW RATE</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Membership Content -->
+  <section class="membership-container">
+    <!-- Benefits -->
+    <div class="benefits-section">
+      <h2 class="section-title">Membership Benefits</h2>
+      <p class="section-subtitle">Join our community of music creators and supervisors to access exclusive resources, events, and opportunities.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-graduation-cap benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">All Courses Included</h3>
+          <p class="benefit-description">
+            Get unlimited access to all Sync Summit courses including The Sync Course and The Music, Brands & Ads Course. New courses added regularly.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-calendar-check benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">Event Discounts</h3>
+          <p class="benefit-description">
+            Receive exclusive member pricing on all Sync Summit events, both in-person and virtual. Save hundreds on event registrations.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-headphones benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">Priority Listening</h3>
+          <p class="benefit-description">
+            Get early access and priority registration for all listening sessions with top music supervisors and industry executives.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-video benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">Video Archives</h3>
+          <p class="benefit-description">
+            Watch recordings of past events, workshops, and panels. Access hundreds of hours of exclusive content on-demand.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-users benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">Member Community</h3>
+          <p class="benefit-description">
+            Join our exclusive member community to network, collaborate, and share opportunities with fellow sync professionals.
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-book benefit-icon"></i>
+          </div>
+          <h3 class="benefit-title">Resource Library</h3>
+          <p class="benefit-description">
+            Access our complete library of templates, guides, contracts, and industry resources to help you succeed in sync.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- What's Included -->
+    <div class="included-section">
+      <h2 class="section-title">What's Included</h2>
+      <ul class="included-list">
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Unlimited access to all online courses</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">50% discount on all live events</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Priority registration for listening sessions</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Complete video archive access</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Monthly member-only webinars</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Metadata style guide and templates</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Industry reports and insights</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Member directory and networking</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Consulting services discount</span>
+        </li>
+        <li class="included-item">
+          <div class="included-icon">
+            <i class="fas fa-check"></i>
+          </div>
+          <span class="included-text">Early access to new features</span>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- Pricing - Moved to end -->
+    <div class="pricing-section">
+      <div class="pricing-card">
+        <h2 class="price">999</h2>
+        <p class="price-period">per year</p>
+        <a href="#" class="price-cta">BECOME A MEMBER</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+      // Mobile menu toggle with dropdown support
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Handle dropdown clicks on mobile
+      const dropdownToggles = document.querySelectorAll('.nav-item .nav-link');
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768 && this.querySelector('i')) {
+            e.preventDefault();
+            const dropdown = this.nextElementSibling;
+            if (dropdown && dropdown.classList.contains('dropdown-menu')) {
+              dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+              const icon = this.querySelector('i');
+              icon.style.transform = dropdown.style.display === 'block' ? 'rotate(180deg)' : 'rotate(0)';
+            }
+          }
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+      
+      // Reset dropdowns on window resize
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          const dropdowns = document.querySelectorAll('.dropdown-menu');
+          dropdowns.forEach(dropdown => {
+            dropdown.style.display = '';
+          });
+          const icons = document.querySelectorAll('.nav-link i');
+          icons.forEach(icon => {
+            icon.style.transform = '';
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

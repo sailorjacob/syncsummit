@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | SyncSummit</title>
+  <meta name="description" content="Learn about SyncSummit's mission to connect great music with visual and interactive media projects. A letter from founder Mark Frieser.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Share styles with main page -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    
+
+    /* Page-specific styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      padding:  8rem 0 4rem;
+      text-align: center;
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    
+    .letter-section {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .letter-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .letter-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .definition {
+      background: var(--bg-secondary);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+    
+    .definition strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .letter-content {
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+    
+    .letter-content p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .services-list {
+      counter-reset: services;
+      margin: 2rem 0;
+    }
+    
+    .service-item {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 2rem;
+      counter-increment: services;
+    }
+    
+    .service-item::before {
+      content: counter(services) ".";
+      position: absolute;
+      left: 0;
+      top: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .service-item strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+    
+    .signature-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .signature {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    
+    .signature-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
+    }
+    
+    .signature-title {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    
+    .contact-info {
+      background: var(--bg-secondary);
+      padding: 2rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+    }
+    
+    .contact-info h3 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+    
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+    
+    .contact-info a:hover {
+      color: var(--primary-dark);
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-tertiary);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .footer-content p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .navbar {
+        height: 70px;
+        padding: 0 1rem;
+      overflow: visible;
+    }
+      
+      .logo-section {
+        margin-top: 0;
+      }
+      
+      .logo {
+        height: 50px;
+      }
+      
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 0.5rem;
+        margin-left: 0;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .nav-link::after {
+        display: none;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+        order: -1;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .letter-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .service-item {
+        padding-left: 2.5rem;
+      }
+    }
+  
+    /* Page Transition Overlay */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .transition-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .transition-loader::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+  </div>
+
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+          </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">About Sync Summit</h1>
+    </div>
+  </section>
+  
+  <!-- About Content -->
+  <section class="about-container">
+    <div class="container">
+      <div class="letter-section">
+        <div class="letter-header">
+          <h2 class="letter-subtitle">A Letter from Sync Summit Founder and CEO, Mark Frieser</h2>
+        </div>
+        
+        <div class="definition">
+          <p><strong>Sync /siNGk/:</strong> To make (motion picture sound) exactly simultaneous with the action.</p>
+          <p><strong>Sync Summit /siNGk 'sə-mət/:</strong> Your comprehensive resource to synchronize music and your career with the people and the projects that need music in film, TV, games, apps, ads, streaming services and everywhere else that music makes visual and interactive media come to life</p>
+        </div>
+        
+        <div class="letter-content">
+          <p>I started Sync Summit in 2012 with one overriding mission: To help connect great music to the people that need music for their visual and interactive media projects.</p>
+          
+          <p>We do this by providing you with the tools, opportunities for access to the people, the projects, the information and promotional opportunities that you need for success in sync.</p>
+          
+          <p>As someone who's been active in the music and media field for a pretty long time, I've given a great deal of thought to what services we need to provide you that will position you to be as successful as possible in getting your music licensed or getting you a gig to compose or write for a visual media project.</p>
+          
+          <p>Specifically, I asked myself, "What would I want from a company I'm looking to help me succeed in the music licensing for media marketplace?" and I came up with four basic ways we can be of service to you:</p>
+          
+          <div class="services-list">
+            <div class="service-item">
+              <strong>Information.</strong> Knowledge is power. I want to start from the premise of doing everything we can to empower you to have a better understand of the music licensing marketplace before you spend a single cent on anything we do. That means things like publishing a 100% free sync masterclass – something other companies will charge you literally thousands of dollars for, a robust blog filled with priceless information on the industry, a podcast that features interviews with industry leaders, and industry reports that break out industry trends and data you can use to better position yourself and your music for success.
+            </div>
+            
+            <div class="service-item">
+              <strong>In-Person Events.</strong> When I create an event, I always start by asking myself "If I was coming to the event, what would I want to get out of it?" That's the genesis of any event I create, and the foundation of Sync Summit. Sync Summits take place all over the planet, annually bringing together thousands of people – both face to face and virtually – to discuss issues in the music licensing industry, to learn best practices for presenting and placing music in visual/interactive media, to share great new music, discover new tools and services and to connect directly with decision makers in visual, interactive, branded and commercial media. We build our Sync Summits so that every single person who attends is provided with the tools to connect and be heard before, during and after every event. It's not just about buying a ticket and coming to a show – it's about harnessing the power of our network for you, your music and your career.
+            </div>
+            
+            <div class="service-item">
+              <strong>Online Events and Listening Sessions.</strong> It is crucial to me that we use every available technology to provide you with every possible avenue of access to our network, the decision makers in our network and our events no matter where you are. That's why every single one of our Sync Summits are also completely available virtually so that, if you cannot attend in person, you'll still get every major benefit of taking part before, during and after the event. And, if you want to connect your music (and yourself) directly with an industry decision maker without having to travel, our completely online Sync Listening Sessions provide a unique way for you to present your music, yourself and speak directly with a music supervisor or industry executive who can potentially use your music in one of their projects as well as provide you with invaluable advice on how you can position yourself for success in the music licensing and composition marketplace.
+            </div>
+            
+            <div class="service-item">
+              <strong>Consulting Services.</strong> If you want to tap into Sync Summit's expertise and network on a deeper level, we provide a full-range of consulting services ranging from looking over a deal you've received from a sync agent or a TV show, connect your music to our extensive network or acting as a third-part sync agency for your catalogue or company. Our of course services are customized to your specific needs, are available at competitive rate and are designed to help you succeed in the music and media marketplace.
+            </div>
+          </div>
+          
+          <p>So, whether you're an artist, a music supervisor, a writer, a producer, a label, publisher, manager, executive, lawyer, technologist or anyone seeking the tools, connections and information needed for success in music licensing industry and composition for media, ads and brands, we're here to help you succeed in sync.</p>
+          
+          <p>I look forward to the opportunity to be of service to you, your music and your career.</p>
+          
+          <p>Please send me a note to <a href="mailto:mark@syncsummit.com">mark@syncsummit.com</a> if you want to learn more about how we can be of service to you and your career in music, visual, interactive and branded media.</p>
+        </div>
+        
+        <div class="signature-section">
+          <p class="signature">Sincerely,</p>
+          <p class="signature-name">Mark Frieser</p>
+          <p class="signature-title">Founder and CEO<br>Sync Summit</p>
+        </div>
+        
+        <div class="contact-info">
+          <h3>Physical Address:</h3>
+          <p>93 4th Avenue<br>
+          Suite 1472<br>
+          NY, NY 10003</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+
+    // Mobile menu toggle with dropdown support
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+    });
+  </script>
+</body>
+</html> 

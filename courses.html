@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Educational Courses | SyncSummit</title>
+  <meta name="description" content="Learn key aspects of sync licensing, composition, and the music business through interactive courses taught by industry experts.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Share styles with main page -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Import navigation styles from index.html */
+    :root {
+      /* Modern minimalistic color palette - Light Grey Theme */
+      --primary: #666666;      /* Medium grey */
+      --primary-dark: #333333;
+      --primary-light: #F5F5F5;
+            /* Modern vibrant color palette */
+      --primary: #666666;      /* Medium grey */
+      --primary-dark: #333333;
+      --primary-light: #F5F5F5;
+      
+      /* Card 1 - Coral/Pink/Yellow (Current) */
+      --gradient1-start: #FF6B6B;
+      --gradient1-mid: #FF8E53;
+      --gradient1-end: #FFE66D;
+      
+      /* Card 2 - Purple/Blue */
+      --gradient2-start: #667EEA;
+      --gradient2-mid: #764BA2;
+      --gradient2-end: #6B8DD6;
+      
+      /* Card 3 - Teal/Green */
+      --gradient3-start: #11998E;
+      --gradient3-mid: #38EF7D;
+      --gradient3-end: #2AF598;
+      
+      /* Card 4 - Orange/Red */
+      --gradient4-start: #FC466B;
+      --gradient4-mid: #3F5EFB;
+      --gradient4-end: #FC466B;
+      
+      /* Hero Section - Sunset gradient */
+      --hero-gradient-start: #FA709A;
+      --hero-gradient-mid: #FEE140;
+      --hero-gradient-end: #FA709A;
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #FAFAFA;
+      --bg-tertiary: #F0F0F0;
+      --text-primary: #2D2D2D;
+      --text-secondary: #666666;
+      --text-muted: #999999;
+      --border: #E0E0E0;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    
+
+    /* Page-specific styles */
+    .page-hero {
+      background: linear-gradient(135deg, var(--bg-tertiary) 0%, var(--bg-secondary) 100%);
+      padding:  8rem 0 4rem;
+      text-align: center;
+    }
+    
+    .page-title {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+    
+    .page-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    
+    .intro-text {
+      font-size: 1.125rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    
+    .course-listing {
+      background: var(--bg-secondary);
+      border-left: 4px solid var(--accent);
+      padding: 2rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    .course-listing h3 {
+      color: var(--text-primary);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    
+    .testimonials {
+      margin-top: 4rem;
+      padding: 2rem;
+      background: var(--bg-tertiary);
+      border-radius: 12px;
+    }
+    
+    .testimonials h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+    
+    .testimonial {
+      font-style: italic;
+      color: var(--text-secondary);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-left: 3px solid var(--primary-light);
+      background: white;
+      border-radius: 0 8px 8px 0;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--bg-tertiary);
+      padding: 3rem 0 1.5rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    .footer-content {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+    
+    .footer-content p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--bg-primary);
+        box-shadow: var(--shadow-md);
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+      }
+      
+      .nav-menu.active {
+        display: flex;
+      }
+      
+      .mobile-menu-toggle {
+        display: block;
+      }
+      
+      .page-title {
+        font-size: 2rem;
+      }
+    }
+  
+    /* Page Transition Overlay */
+    .page-transition {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-primary);
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    
+    .page-transition.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .transition-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .transition-loader::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Transition Overlay -->
+  <div class="page-transition">
+    <div class="transition-loader"></div>
+  </div>
+
+
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <div class="logo-section">
+        <a href="/" class="logo">
+          <img src="https://twejikjgxkzmphocbvpt.supabase.co/storage/v1/object/public/havensvgs//sync4.png" alt="SyncSummit">
+        </a>
+      </div>
+      
+      <div class="nav-menu" id="nav-menu">
+        <a href="/membership.html" class="nav-link">MEMBERSHIP</a>
+        
+        <div class="nav-item">
+          <a href="/courses.html" class="nav-link">COURSES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/courses.html#sync-course" class="dropdown-item">The Sync Course</a>
+            <a href="/courses.html#music-brands-ads" class="dropdown-item">The Music, Brands & Ads Course</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/events.html" class="nav-link">EVENTS <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/events.html#2025-sync-summit" class="dropdown-item">2025 Sync Summit NY & LA</a>
+            <a href="/events.html#2025-adsync-summit" class="dropdown-item">2025 AdSync Summit Online</a>
+            <a href="/events.html#video-archives" class="dropdown-item">Video Archives & Contact Access</a>
+          </div>
+        </div>
+        
+        <div class="nav-item">
+          <a href="/listening-sessions.html" class="nav-link">LISTENING <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/listening-sessions.html#josh-rabinowitz-june-2025" class="dropdown-item">June 29, 2025: Josh Rabinowitz</a>
+          </div>
+        </div>
+        
+        <a href="/consulting.html" class="nav-link">CONSULTING</a>
+        
+        <div class="nav-item">
+          <a href="/articles.html" class="nav-link">ARTICLES <i class="fas fa-chevron-down"></i></a>
+          <div class="dropdown-menu">
+            <a href="/articles.html#metadata-style-guide" class="dropdown-item">The Metadata Style Guide</a>
+            <a href="/articles.html#ten-metadata-commandments" class="dropdown-item">The Ten Metadata Commandments</a>
+            <a href="/articles.html#sync-cafe" class="dropdown-item">Sync Cafe</a>
+            <a href="/articles.html#sync-cafe-video-archives" class="dropdown-item">Sync Cafe Video Archives</a>
+            <a href="/blog.html" class="dropdown-item">Blog</a>
+          </div>
+        </div>
+        
+        <a href="/about.html" class="nav-link">ABOUT</a>
+      </div>
+      
+      <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+  
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1 class="page-title">Online Educational Courses</h1>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <section class="page-content">
+    <div class="container">
+      <p class="intro-text">
+        Sync Summit's series of online, interactive courses provide you with the opportunity to learn key aspects of what's important to success is sync, composition, artist management, brand tie-ins and the music business in general by providing you with immersive, interactive courses that give you the opportunity to learn by doing from recognised industry experts.
+      </p>
+      
+      <p class="intro-text">
+        These are four-to-ten week courses that are comprised of weekly office hours consultation for personal guidance and instruction, specific assignments and briefs designed to help you understand how you would respond to real-world business and creative situations and constant, personal advice and assistance from expert instructors and Sync Summit founder, Mark Frieser as well as business documentation that we use when we make sync deals, create metadata, create split agreements and much more.
+      </p>
+      
+      <p class="intro-text">
+        Our mission with every course is to make sure you get the information you need to be successful in the business of music. Below are links to courses currently open for enrolment. Course listings are updated regularly:
+      </p>
+      
+      <div class="course-listing" id="sync-course">
+        <h3>THE SYNC COURSE: 16 WEEKS, 9 LISTENING SESSIONS, 7 CLASSES – $699 – CLASSES BEGIN JULY 20</h3>
+      </div>
+      
+      <div class="course-listing" id="music-brands-ads">
+        <h3>The Music In Ads Course – $999 to sign up – our final course on everything to do with music, ads and brands – Classes start June 26</h3>
+      </div>
+      
+      <div class="testimonials">
+        <h3>Here's feedback from some of the students of our courses:</h3>
+        
+        <div class="testimonial">
+          "Quick reflection on the course. You have delivered everything you said you would and more—-gone above and beyond. I could not be more satisfied, nor more impressed.<br><br>
+          To meet kind and wonderful people is always a joy. To meet kind and wonderful people in your field—who welcome you in, possess the expertise, and what I'll call a 'beautiful willingness' to help you find your way in a complex world—is a profound experience. An 'initiation' of sorts, if you will. Nothing more could an artist hope for."
+        </div>
+        
+        <div class="testimonial">
+          "Great Job On The Course. As my Kiwi friends would say, 'Good On You.' Thanks again"
+        </div>
+        
+        <div class="testimonial">
+          "Thank you for this awesome course!"
+        </div>
+        
+        <div class="testimonial">
+          "I never expected to enjoy your course so much. Your world is competitive and can exaggerate our less attractive qualities. You are both inspiring examples of win:win spirituality. What we need everywhere especially wherever there is money. You and your course vision meant a lot to everyone, giving us an anchor during these times. Thank you for that."
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-links">
+          <a href="/privacy.html">Privacy Policy</a>
+          <a href="/terms.html">Terms of Service</a>
+          <a href="/contact.html">Contact Us</a>
+        </div>
+        <p>Copyright © 2025 Sync Summit. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script>
+
+    // Page Transition System
+    const pageTransition = document.querySelector('.page-transition');
+    
+    // Function to handle smooth page transitions
+    function smoothTransition(url) {
+      pageTransition.classList.add('active');
+      
+      setTimeout(() => {
+        window.location.href = url;
+      }, 300);
+    }
+    
+    // Add transition to all internal links
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle all internal navigation links
+      const internalLinks = document.querySelectorAll('a[href^="/"], a[href^="./"], a[href$=".html"]');
+      
+      internalLinks.forEach(link => {
+        // Skip hash links and download links
+        if (link.getAttribute('href').startsWith('#') || link.hasAttribute('download')) {
+          return;
+        }
+        
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const href = this.getAttribute('href');
+          smoothTransition(href);
+        });
+      });
+      
+
+    // Mobile menu toggle with dropdown support
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navMenu = document.getElementById('nav-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!event.target.closest('.navbar')) {
+          navMenu.classList.remove('active');
+          const icon = mobileMenuToggle.querySelector('i');
+          icon.classList.add('fa-bars');
+          icon.classList.remove('fa-times');
+        }
+      });
+      
+      // Smooth scroll to course when hash in URL
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        }
+      }
+    });
+  </script>
+</body>
+</html> 
