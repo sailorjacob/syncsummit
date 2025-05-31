@@ -1753,7 +1753,7 @@
           icon
         }
       }`,
-      recentPosts: `*[_type == "post"] | order(publishedAt desc) [0...5] {
+      recentPosts: `*[_type == "blogPost"] | order(publishedAt desc) [0...5] {
         title,
         slug
       }`,
