@@ -1,37 +1,26 @@
 {
-  "name": "syncsummit",
-  "private": true,
+  "name": "syncsummit-website",
   "version": "1.0.0",
-  "main": "package.json",
-  "license": "UNLICENSED",
+  "description": "Modern SyncSummit website with Sanity CMS integration",
+  "main": "index.html",
   "scripts": {
-    "dev": "sanity dev",
-    "start": "sanity start",
-    "build": "sanity build",
-    "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "serve": "python3 server.py",
+    "serve-simple": "python3 -m http.server 8080",
+    "dev": "python3 server.py"
   },
   "keywords": [
-    "sanity"
+    "syncsummit",
+    "music",
+    "licensing",
+    "sync",
+    "sanity-cms"
   ],
-  "dependencies": {
-    "@sanity/vision": "^3.90.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sanity": "^3.90.0",
-    "styled-components": "^6.1.15"
-  },
+  "author": "SyncSummit",
+  "license": "MIT",
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^18.0.25",
-    "eslint": "^9.9.0",
-    "prettier": "^3.0.2",
-    "typescript": "^5.1.6"
+    "http-server": "^14.1.1"
   },
-  "prettier": {
-    "semi": false,
-    "printWidth": 100,
-    "bracketSpacing": false,
-    "singleQuote": true
+  "dependencies": {
+    "@sanity/client": "^6.0.0"
   }
 }
