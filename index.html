@@ -1315,6 +1315,37 @@
         margin-bottom: 0.5rem;
       }
     }
+
+    @media (max-width: 900px) {
+      .content-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .content-card {
+        width: 100%;
+        margin: 0 auto;
+        min-width: 0;
+        max-width: 100%;
+      }
+      .card-description {
+        display: none;
+        transition: max-height 0.3s ease;
+      }
+      .content-card.expanded .card-description {
+        display: block;
+        margin-top: 0.5rem;
+      }
+      .card-toggle {
+        display: inline-block;
+        background: none;
+        border: none;
+        color: var(--accent, #3498DB);
+        font-size: 1.1rem;
+        cursor: pointer;
+        margin-top: 0.5rem;
+      }
+    }
   </style>
   <!-- Shared styles -->
   <link rel="stylesheet" href="styles.css">
@@ -1398,36 +1429,39 @@
         <div class="content-card">
           <div class="card-icon-wrapper">
             <i class="fas fa-graduation-cap card-icon"></i>
-                </div>
+          </div>
           <h3 class="card-title">Sync Summit Courses</h3>
+          <button class="card-toggle" aria-label="Toggle description">More</button>
           <p class="card-description">
             Deep dive into the business of music and media with courses taught by industry experts. Learn from creators, music supervisors, and sync agents who share their first-hand knowledge.
           </p>
           <a href="/courses.html" class="card-link">
             Explore Courses <i class="fas fa-arrow-right"></i>
           </a>
-                </div>
+        </div>
 
         <!-- Sync Summits - Online All The Time -->
         <div class="content-card">
           <div class="card-icon-wrapper">
             <i class="fas fa-globe card-icon"></i>
-                </div>
+          </div>
           <h3 class="card-title">Global Sync Events</h3>
+          <button class="card-toggle" aria-label="Toggle description">More</button>
           <p class="card-description">
             Connect with the world's top music makers, technology companies, and Music Supervisors. We personally connect you and your music to opportunities in sync, music, and media.
           </p>
           <a href="/events.html" class="card-link">
             View Events <i class="fas fa-arrow-right"></i>
           </a>
-                </div>
+        </div>
 
         <!-- Sync Summit Consulting -->
         <div class="content-card">
           <div class="card-icon-wrapper">
             <i class="fas fa-compass card-icon"></i>
-              </div>
+          </div>
           <h3 class="card-title">Expert Consulting</h3>
+          <button class="card-toggle" aria-label="Toggle description">More</button>
           <p class="card-description">
             Get personalized guidance to prepare, package, and present your music to decision makers in TV, film, games, apps, brands, and advertising. Access the tools and contacts you need.
           </p>
@@ -1442,6 +1476,7 @@
             <i class="fas fa-lightbulb card-icon"></i>
           </div>
           <h3 class="card-title">Industry Intelligence</h3>
+          <button class="card-toggle" aria-label="Toggle description">More</button>
           <p class="card-description">
             Stay ahead with our industry reports, key data insights, and exclusive content. Access the knowledge that gives you a competitive edge in the sync marketplace.
           </p>
@@ -1759,6 +1794,17 @@
         }
       });
     });
+
+    // Mobile card description toggle
+    if (window.innerWidth <= 900) {
+      document.querySelectorAll('.card-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          var card = btn.closest('.content-card');
+          card.classList.toggle('expanded');
+          btn.textContent = card.classList.contains('expanded') ? 'Less' : 'More';
+        });
+      });
+    }
   </script>
 
   <!-- Sanity Integration -->
