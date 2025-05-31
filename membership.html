@@ -19,8 +19,17 @@
   
   <style>
     /* Page-specific styles */
+    :root {
+      --bright-blue: #0088FF;
+      --bright-blue-light: #39A9FF;
+      --bright-blue-dark: #0066CC;
+      --silver: #F0F5FF;
+      --silver-light: #F8FBFF;
+      --silver-dark: #E0E8F5;
+    }
+    
     .membership-hero {
-      background: linear-gradient(135deg, #ffffff 0%, rgba(250, 112, 154, 0.08) 50%, rgba(102, 126, 234, 0.08) 100%);
+      background: linear-gradient(135deg, white 0%, var(--silver-light) 50%, var(--silver) 100%);
       padding: 8rem 0 4rem;
       text-align: center;
       color: var(--text-primary);
@@ -37,9 +46,9 @@
       width: 200%;
       height: 200%;
       background-image: 
-        radial-gradient(circle at 20% 80%, transparent 50%, rgba(255, 107, 107, 0.05) 50.5%, rgba(255, 107, 107, 0.05) 60%, transparent 60.5%),
-        radial-gradient(circle at 60% 20%, transparent 30%, rgba(102, 126, 234, 0.05) 30.5%, rgba(102, 126, 234, 0.05) 40%, transparent 40.5%),
-        radial-gradient(circle at 80% 60%, transparent 40%, rgba(17, 153, 142, 0.04) 40.5%, rgba(17, 153, 142, 0.04) 50%, transparent 50.5%);
+        radial-gradient(circle at 20% 80%, transparent 50%, rgba(0, 136, 255, 0.03) 50.5%, rgba(0, 136, 255, 0.03) 60%, transparent 60.5%),
+        radial-gradient(circle at 60% 20%, transparent 30%, rgba(0, 136, 255, 0.03) 30.5%, rgba(0, 136, 255, 0.03) 40%, transparent 40.5%),
+        radial-gradient(circle at 80% 60%, transparent 40%, rgba(0, 136, 255, 0.02) 40.5%, rgba(0, 136, 255, 0.02) 50%, transparent 50.5%);
       animation: backgroundShift 30s ease-in-out infinite;
       z-index: 1;
       opacity: 0.8;
@@ -69,7 +78,7 @@
       display: inline-block;
       opacity: 0;
       animation: rotateIn 0.6s ease-out 1.2s forwards;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -106,7 +115,7 @@
       left: 0;
       right: 0;
       height: 200px;
-      background: linear-gradient(180deg, rgba(255, 107, 107, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+      background: linear-gradient(180deg, rgba(0, 136, 255, 0.02) 0%, rgba(255, 255, 255, 0) 100%);
       z-index: -1;
     }
     
@@ -124,7 +133,7 @@
       opacity: 0;
       animation: cardEntrance 1s ease-out 0.3s forwards;
       background-image: linear-gradient(white, white), 
-                        linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+                        linear-gradient(135deg, var(--bright-blue-light), var(--bright-blue));
       background-origin: border-box;
       background-clip: padding-box, border-box;
     }
@@ -134,20 +143,20 @@
       position: absolute;
       top: 25px;
       right: -35px;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-light));
       color: white;
       padding: 0.5rem 3.5rem;
       font-size: 0.75rem;
       font-weight: 700;
       transform: rotate(45deg);
-      box-shadow: 0 2px 10px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 2px 10px rgba(0, 136, 255, 0.3);
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
     
     .price {
       font-size: 4.5rem;
       font-weight: 800;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-light));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -174,7 +183,7 @@
     
     .price-cta {
       display: inline-block;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.9), rgba(102, 126, 234, 0.9));
+      background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-light));
       color: white;
       padding: 1.125rem 3.5rem;
       border-radius: 50px;
@@ -187,7 +196,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 136, 255, 0.3);
     }
     
     .price-cta::before {
@@ -210,7 +219,7 @@
     
     .price-cta:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 136, 255, 0.4);
     }
     
     /* Benefits Section */
@@ -256,7 +265,7 @@
       animation: cardEntrance 0.8s ease-out forwards;
       border: 2px solid transparent;
       background-image: linear-gradient(white, white), 
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+                        linear-gradient(135deg, var(--silver-light), var(--silver));
       background-origin: border-box;
       background-clip: padding-box, border-box;
       box-shadow: var(--shadow-sm);
@@ -266,7 +275,7 @@
       transform: translateY(-8px);
       box-shadow: var(--shadow-md);
       background-image: linear-gradient(white, white), 
-                        linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+                        linear-gradient(135deg, var(--bright-blue-light), var(--bright-blue));
     }
     
     .benefit-card:nth-child(1) { animation-delay: 0.1s; }
@@ -286,37 +295,23 @@
       margin: 0 auto 2rem;
       position: relative;
       overflow: hidden;
-      background: white;
-      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.2), 0 0 0 6px rgba(255, 107, 107, 0.05);
+      background: var(--silver-light);
+      box-shadow: 0 0 0 2px rgba(0, 136, 255, 0.2), 0 0 0 6px rgba(0, 136, 255, 0.05);
       transition: var(--transition);
     }
     
-    .benefit-card:nth-child(1) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(255, 107, 107, 0.3), 0 0 0 6px rgba(255, 107, 107, 0.1);
-    }
-    
-    .benefit-card:nth-child(2) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3), 0 0 0 6px rgba(102, 126, 234, 0.1);
-    }
-    
-    .benefit-card:nth-child(3) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(17, 153, 142, 0.3), 0 0 0 6px rgba(17, 153, 142, 0.1);
-    }
-    
-    .benefit-card:nth-child(4) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(252, 70, 107, 0.3), 0 0 0 6px rgba(252, 70, 107, 0.1);
-    }
-    
-    .benefit-card:nth-child(5) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.3), 0 0 0 6px rgba(102, 126, 234, 0.1);
-    }
-    
+    .benefit-card:nth-child(1) .benefit-icon-wrapper,
+    .benefit-card:nth-child(2) .benefit-icon-wrapper,
+    .benefit-card:nth-child(3) .benefit-icon-wrapper,
+    .benefit-card:nth-child(4) .benefit-icon-wrapper,
+    .benefit-card:nth-child(5) .benefit-icon-wrapper,
     .benefit-card:nth-child(6) .benefit-icon-wrapper {
-      box-shadow: 0 0 0 2px rgba(17, 153, 142, 0.3), 0 0 0 6px rgba(17, 153, 142, 0.1);
+      box-shadow: 0 0 0 2px rgba(0, 136, 255, 0.3), 0 0 0 6px rgba(0, 136, 255, 0.1);
     }
     
     .benefit-card:hover .benefit-icon-wrapper {
       transform: scale(1.1);
+      background: white;
     }
     
     .benefit-icon {
@@ -327,14 +322,8 @@
     
     .benefit-card:hover .benefit-icon {
       transform: scale(1.1) rotate(5deg);
+      color: var(--bright-blue);
     }
-    
-    .benefit-card:nth-child(1):hover .benefit-icon { color: rgba(255, 107, 107, 1); }
-    .benefit-card:nth-child(2):hover .benefit-icon { color: rgba(102, 126, 234, 1); }
-    .benefit-card:nth-child(3):hover .benefit-icon { color: rgba(17, 153, 142, 1); }
-    .benefit-card:nth-child(4):hover .benefit-icon { color: rgba(252, 70, 107, 1); }
-    .benefit-card:nth-child(5):hover .benefit-icon { color: rgba(102, 126, 234, 1); }
-    .benefit-card:nth-child(6):hover .benefit-icon { color: rgba(17, 153, 142, 1); }
     
     .benefit-title {
       font-size: 1.375rem;
@@ -360,7 +349,7 @@
       overflow: hidden;
       border: 2px solid transparent;
       background-image: linear-gradient(white, white), 
-                        linear-gradient(135deg, rgba(255, 107, 107, 0.5), rgba(102, 126, 234, 0.5));
+                        linear-gradient(135deg, var(--bright-blue-light), var(--bright-blue));
       background-origin: border-box;
       background-clip: padding-box, border-box;
       box-shadow: var(--shadow-sm);
@@ -373,7 +362,7 @@
       right: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255, 107, 107, 0.03) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0, 136, 255, 0.03) 0%, transparent 70%);
       animation: pulse 5s ease-in-out infinite;
     }
     
@@ -406,14 +395,14 @@
       flex-shrink: 0;
       width: 28px;
       height: 28px;
-      background: linear-gradient(135deg, rgba(255, 107, 107, 0.8), rgba(102, 126, 234, 0.8));
+      background: linear-gradient(135deg, var(--bright-blue), var(--bright-blue-light));
       color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.875rem;
-      box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 2px 8px rgba(0, 136, 255, 0.3);
     }
     
     .included-text {
