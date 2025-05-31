@@ -63,21 +63,17 @@
     }
     
     .page-title {
-      font-size: 3rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: var(--text-primary);
-      background: linear-gradient(135deg, var(--membership-primary), var(--membership-accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      font-size: 2.75rem;
+      font-weight: 700;
+      text-transform: none;
+      letter-spacing: -0.5px;
     }
     
     .page-subtitle {
       font-size: 1.25rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: -0.2px;
     }
     
     .membership-container {
@@ -100,21 +96,25 @@
     }
     
     .section-subtitle {
-      text-align: center;
       font-size: 1.125rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin: 0 auto 4rem;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      text-transform: none;
+      font-weight: 400;
+      max-width: 900px;
     }
     
     .benefits-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
       margin-bottom: 4rem;
     }
     
     .benefit-card {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
       background: white;
       border: 1px solid rgba(0, 180, 216, 0.1);
       border-radius: 16px;
@@ -153,17 +153,23 @@
     
     .benefit-title {
       font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--text-primary);
+      font-weight: 600;
       margin-bottom: 1rem;
-      text-align: center;
+      text-align: left;
+      text-transform: none;
     }
     
     .benefit-description {
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-size: 0.95rem;
-      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    
+    .benefit-value {
+      margin-top: 1rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0, 180, 216, 0.1);
     }
     
     /* What's Included Section */
@@ -274,8 +280,8 @@
       padding: 1rem 2.5rem;
       border-radius: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      text-transform: none;
+      letter-spacing: 0;
       font-size: 1rem;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -289,13 +295,19 @@
     }
     
     /* Responsive styles */
-    @media (max-width: 768px) {
-      .page-title {
-        font-size: 2rem;
+    @media (max-width: 1200px) {
+      .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
-      
+    }
+    
+    @media (max-width: 768px) {
       .benefits-grid {
         grid-template-columns: 1fr;
+      }
+      
+      .page-title {
+        font-size: 2rem;
       }
       
       .pricing-card {
@@ -397,13 +409,6 @@
     }
 
     /* Additional styles for new content */
-    .benefit-value {
-      display: block;
-      margin-top: 0.5rem;
-      font-weight: 600;
-      color: var(--membership-primary);
-    }
-    
     .pricing-header {
       margin-bottom: 2rem;
     }
@@ -440,12 +445,6 @@
       font-size: 0.875rem;
       color: var(--text-secondary);
       line-height: 1.5;
-    }
-    
-    .section-subtitle {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      margin-bottom: 3rem;
     }
   </style>
 </head>
@@ -525,9 +524,9 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="page-title">
-          THE SYNC SUMMIT ANNUAL MEMBERSHIP
+          The Sync Summit Annual Membership
         </h1>
-        <p class="page-subtitle">12 MONTHS OF ALL OUR SERVICES FOR $2000 – $3000 OFF THE STANDARD RATE</p>
+        <p class="page-subtitle">12 months of all our services for $2,000 – $3,000 off the standard rate</p>
       </div>
     </div>
   </section>
@@ -535,72 +534,72 @@
   <!-- Membership Content -->
   <section class="membership-container">
     <div class="container">
-      <!-- Benefits -->
-      <div class="benefits-section">
-        <h2 class="section-title">Membership Benefits</h2>
-        <p class="section-subtitle">THE SYNC SUMMIT ANNUAL MEMBERSHIP PROGRAM HAS BEEN DESIGNED TO GIVE YOU ACCESS TO ALL THE NETWORKING RESOURCES, EVENTS, COURSES, CONTACTS, LISTENING SESSIONS AND CONSULTING OPPORTUNITIES THAT WE HAVE TO OFFER – ALL BUNDLED IN A LOW ANNUAL RATE.</p>
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
+    <!-- Benefits -->
+    <div class="benefits-section">
+      <h2 class="section-title">Membership Benefits</h2>
+        <p class="section-subtitle">The Sync Summit Annual Membership program has been designed to give you access to all the networking resources, events, courses, contacts, listening sessions and consulting opportunities that we have to offer – all bundled in a low annual rate.</p>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
               <i class="fas fa-ticket-alt benefit-icon"></i>
-            </div>
+          </div>
             <h3 class="benefit-title">Event Access</h3>
-            <p class="benefit-description">
-              Two Passes to each of our in-person and online events, including any events in North America and Europe.
-              <span class="benefit-value">$2000 value</span>
-            </p>
-          </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
+          <p class="benefit-description">
+              Two passes to each of our in-person and online events, including any events in North America and Europe.
+              <span class="benefit-value">$2,000 value</span>
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
               <i class="fas fa-graduation-cap benefit-icon"></i>
-            </div>
+          </div>
             <h3 class="benefit-title">Course Access</h3>
-            <p class="benefit-description">
+          <p class="benefit-description">
               Registration for all of our current and upcoming classes, including the sync sessions class and our music in ads course.
-              <span class="benefit-value">$1600 value</span>
-            </p>
+              <span class="benefit-value">$1,600 value</span>
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-headphones benefit-icon"></i>
           </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
-              <i class="fas fa-headphones benefit-icon"></i>
-            </div>
             <h3 class="benefit-title">Listening Sessions</h3>
-            <p class="benefit-description">
+          <p class="benefit-description">
               Registration for every single listening session – over 40 per year.
-              <span class="benefit-value">$4000 value</span>
-            </p>
+              <span class="benefit-value">$4,000 value</span>
+          </p>
+        </div>
+        
+        <div class="benefit-card">
+          <div class="benefit-icon-wrapper">
+            <i class="fas fa-video benefit-icon"></i>
           </div>
-          
-          <div class="benefit-card">
-            <div class="benefit-icon-wrapper">
-              <i class="fas fa-video benefit-icon"></i>
-            </div>
             <h3 class="benefit-title">Monthly Consultation</h3>
-            <p class="benefit-description">
+          <p class="benefit-description">
               A 30-minute monthly video consultation call with Sync Summit Founder, Mark Frieser.
-              <span class="benefit-value">$1200 value</span>
-            </p>
-          </div>
+              <span class="benefit-value">$1,200 value</span>
+          </p>
         </div>
       </div>
-      
+    </div>
+    
       <!-- Pricing -->
       <div class="pricing-section">
         <div class="pricing-card">
           <div class="pricing-header">
-            <h2 class="price">2000</h2>
+            <h2 class="price">2,000</h2>
             <p class="price-period">per year</p>
-            <p class="price-discount">$3000 OFF Standard Rate</p>
+            <p class="price-discount">$3,000 off standard rate</p>
           </div>
           <div class="pricing-details">
-            <p class="standard-price">Standard Price: $5000</p>
+            <p class="standard-price">Standard Price: $5,000</p>
             <p class="offer-expires">Special offer expires April 20</p>
           </div>
-          <a href="#" class="price-cta">SIGN UP NOW</a>
+          <a href="#" class="price-cta">Sign up now</a>
           <p class="pricing-note">After signup, you'll receive a personal call from Sync Summit CEO Mark Frieser to discuss your membership details and answer any questions.</p>
-        </div>
+    </div>
       </div>
     </div>
   </section>
