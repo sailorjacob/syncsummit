@@ -21,30 +21,30 @@
       --primary-dark: #333333;
       --primary-light: #F5F5F5;
       
-      /* Updated Membership Section Colors */
-      --gradient1-start: #2C3E50;  /* Deep Blue */
-      --gradient1-mid: #3498DB;    /* Bright Blue */
-      --gradient1-end: #2980B9;    /* Rich Blue */
+      /* Updated Membership Section Colors - Vibrant Green/Orange */
+      --gradient1-start: #00B894;  /* Vibrant Green */
+      --gradient1-mid: #FFA502;    /* Bright Orange */
+      --gradient1-end: #00B894;    /* Vibrant Green */
       
-      /* Card 2 - Purple/Blue */
-      --gradient2-start: #8E44AD;  /* Deep Purple */
-      --gradient2-mid: #9B59B6;    /* Bright Purple */
-      --gradient2-end: #7D3C98;    /* Rich Purple */
+      /* Card 2 - Vibrant Purple/Orange */
+      --gradient2-start: #FF9F43;  /* Bright Orange */
+      --gradient2-mid: #FF6B6B;    /* Coral */
+      --gradient2-end: #FF9F43;    /* Bright Orange */
       
-      /* Card 3 - Teal/Green */
-      --gradient3-start: #16A085;  /* Deep Teal */
-      --gradient3-mid: #1ABC9C;    /* Bright Teal */
-      --gradient3-end: #138D75;    /* Rich Teal */
+      /* Card 3 - Vibrant Green/Teal */
+      --gradient3-start: #00D68F;  /* Bright Green */
+      --gradient3-mid: #00B894;    /* Vibrant Teal */
+      --gradient3-end: #00D68F;    /* Bright Green */
       
-      /* Card 4 - Orange/Red */
-      --gradient4-start: #E67E22;  /* Deep Orange */
-      --gradient4-mid: #F39C12;    /* Bright Orange */
-      --gradient4-end: #D35400;    /* Rich Orange */
+      /* Card 4 - Vibrant Orange/Red */
+      --gradient4-start: #FF9F43;  /* Bright Orange */
+      --gradient4-mid: #FF6B6B;    /* Coral */
+      --gradient4-end: #FF9F43;    /* Bright Orange */
       
-      /* Hero Section - Updated gradient */
-      --hero-gradient-start: #2C3E50;  /* Deep Blue */
-      --hero-gradient-mid: #3498DB;    /* Bright Blue */
-      --hero-gradient-end: #2980B9;    /* Rich Blue */
+      /* Hero Section - Updated vibrant gradient */
+      --hero-gradient-start: #00B894;  /* Vibrant Green */
+      --hero-gradient-mid: #FFA502;    /* Bright Orange */
+      --hero-gradient-end: #00B894;    /* Vibrant Green */
       
       --bg-primary: #FFFFFF;
       --bg-secondary: #FAFAFA;
@@ -147,8 +147,8 @@
     
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #FFF0F5 0%, #FFFAE6 100%);
-      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--gradient1-start) 0%, var(--gradient1-mid) 50%, var(--gradient1-end) 100%);
+      padding: 6rem 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -157,38 +157,71 @@
       align-items: center;
       justify-content: center;
       margin-top: 0;
+      color: white;
     }
     
-    /* Animated Background Pattern */
     .hero::before {
       content: '';
       position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background-image: 
-        radial-gradient(circle at 20% 80%, transparent 50%, rgba(250, 112, 154, 0.04) 50.5%, rgba(250, 112, 154, 0.04) 60%, transparent 60.5%),
-        radial-gradient(circle at 60% 20%, transparent 30%, rgba(254, 225, 64, 0.04) 30.5%, rgba(254, 225, 64, 0.04) 40%, transparent 40.5%),
-        radial-gradient(circle at 80% 60%, transparent 40%, rgba(250, 112, 154, 0.03) 40.5%, rgba(250, 112, 154, 0.03) 50%, transparent 50.5%);
-      animation: backgroundShift 30s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.15;
+      animation: gradientShift 15s ease-in-out infinite;
     }
     
-    @keyframes backgroundShift {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(-30px, -30px) rotate(120deg); }
-      66% { transform: translate(30px, -30px) rotate(240deg); }
+    @keyframes gradientShift {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.25; }
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease-out 0.5s forwards;
+    }
+    
+    .hero-title {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fadeInScale 0.8s ease-out 0.8s forwards;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.75rem;
+      color: rgba(255, 255, 255, 0.95);
+      font-weight: 500;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 1.5s forwards;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.4;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
     
     /* Scrolling Media Banner - Smaller and more dynamic */
     .media-banner {
-      position: relative;
-      margin-top: 2rem;
-      padding: 1rem 0;
-      overflow: hidden;
-      max-width: 600px;
+      margin-top: 3rem;
+      padding: 1.5rem 0;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     
     .media-track {
@@ -227,19 +260,17 @@
     }
     
     .media-logo {
-      font-size: 1.75rem;
-      background: linear-gradient(135deg, var(--hero-gradient-start), var(--hero-gradient-end));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      flex-shrink: 0;
-      transition: transform 0.3s ease;
-      opacity: 0.7;
+      font-size: 2rem;
+      color: white;
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     
     .media-logo:hover {
       transform: scale(1.2) rotate(5deg);
       opacity: 1;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     
     @keyframes scrollLogos {
@@ -249,56 +280,6 @@
       100% {
         transform: translateX(-50%);
       }
-    }
-    
-    /* Hero Content - Updated positioning */
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
-      opacity: 0;
-      animation: fadeInUp 1.2s ease-out 0.5s forwards;
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    .hero-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
-      opacity: 0;
-      animation: fadeInScale 0.8s ease-out 0.8s forwards;
-    }
-    
-    @keyframes fadeInScale {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-    
-    .hero-subtitle {
-      font-size: 1.5rem;
-      color: var(--text-secondary);
-      font-weight: 400;
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.5s forwards;
     }
     
     /* Main Layout */
@@ -768,20 +749,20 @@
       }
       
       .hero {
-        padding: 3rem 0;
-        min-height: 300px;
+        padding: 4rem 0;
       }
       
       .hero-title {
-        font-size: 1.75rem;
+        font-size: 2.5rem;
       }
       
       .hero-subtitle {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
       }
       
       .media-banner {
-        max-width: 90vw;
+        margin-top: 2rem;
+        padding: 1rem 0;
       }
       
       .media-logo {
@@ -1551,9 +1532,9 @@
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">
-          SYNC SUMMIT ANNUAL MEMBERSHIP
+          Sync Summit Annual Membership
         </h1>
-        <p class="hero-subtitle">EVERYTHING SYNC SUMMIT AT ONE LOW RATE</p>
+        <p class="hero-subtitle">Unlock premium access to industry events, expert courses, and exclusive resources for music licensing success</p>
         
         <!-- Scrolling Media Logo Banner -->
         <div class="media-banner">

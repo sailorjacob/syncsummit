@@ -13,7 +13,7 @@
 
   body {
     @apply text-gray-900 bg-white font-sans;
-  }
+}
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight;
@@ -102,7 +102,7 @@
 /* Gradient text */
 .gradient-text {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-primary-500 to-secondary-500;
-}
+  }
 
 /* Custom focus styles */
 *:focus-visible {

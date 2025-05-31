@@ -324,7 +324,7 @@ export default async function Home() {
               <Link 
                 href="/membership" 
                 className="bg-white text-primary-700 px-8 py-4 rounded-full text-lg font-medium hover:bg-gray-100 hover:shadow-xl transition-all duration-300 inline-flex items-center group"
-              >
+        >
                 Join Now
                 <svg 
                   className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform duration-200" 

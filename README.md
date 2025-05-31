@@ -1,139 +1,145 @@
-# Sync Summit Website
+# SyncSummit Website
 
-This is a modern recreation of the Sync Summit website built with Next.js and Sanity CMS. It allows you to easily update all content without any coding knowledge.
+A modern, minimalistic recreation of the syncsummit.com website with a light grey theme, featuring the official SyncSummit logo and prepared for migration from WordPress to Sanity CMS.
 
-## Project Structure
+## 🎨 Design Features
 
-- **Root Directory**: Sanity Studio (Content Management System)
-- **frontend/**: Next.js website (what your visitors see)
+- **Light Grey Color Scheme**: Professional grey palette (#666666) with coral red accents (#E63946)
+- **Official SyncSummit Logo**: Black and white logo that overlaps the header for distinctive branding
+- **Responsive Design**: Mobile-first approach with smooth animations
+- **Modern UI**: Clean, minimalistic interface with card-based layouts
+- **Dropdown Navigation**: Dark-themed dropdown menus for easy navigation
 
-## How to Update Content
+## 📁 Project Structure
 
-### 1. Access Sanity Studio
-
-To update any content on your website:
-
-1. Open your terminal/command prompt
-2. Navigate to the project folder
-3. Run: `npm run dev`
-4. Open your browser and go to: `http://localhost:3000`
-5. Log in with your Sanity account
-
-### 2. Content Types You Can Manage
-
-#### Homepage
-- Hero section text
-- Membership CTA
-- Trending items
-- Main sections
-
-#### Events
-- Sync Summit NY/LA
-- AdSync Summit
-- Listening Sessions
-- Event dates, locations, prices, and descriptions
-
-#### Courses
-- The Sync Course
-- Music, Brands & Ads Course
-- Course descriptions, prices, and modules
-
-#### Blog Posts
-- Create new blog posts
-- Edit existing posts
-- Add images and videos
-- Categorize content
-
-#### Articles
-- Metadata Style Guide
-- Ten Metadata Commandments
-- Other static content pages
-
-#### Members & Speakers
-- Add speaker profiles
-- Update bio information
-- Add photos
-
-#### Site Settings
-- Footer text
-- Social media links
-- Contact information
-
-### 3. Publishing Changes
-
-After making changes in Sanity Studio:
-1. Click "Publish" on any edited document
-2. Changes will appear on the website within seconds
-3. No need to redeploy or restart anything!
-
-## Running the Website Locally
-
-### Sanity Studio
-```bash
-# From root directory
-npm run dev
-# Access at http://localhost:3000
+```
+syncsummit/
+├── index.html              # Homepage
+├── courses.html            # Online educational courses page
+├── events.html             # Events and conferences page
+├── styles.css              # Global shared styles
+├── server.py               # Python server with clean URL support
+├── package.json            # Project configuration
+├── README.md               # Project documentation
+├── sanity/                 # Sanity CMS schemas (example)
+│   ├── homepage.js
+│   ├── post.js
+│   ├── event.js
+│   └── schema.js
+├── setup-sanity.sh         # Automated Sanity setup script
+└── .env.example            # Environment variables template
 ```
 
-### Frontend Website
-```bash
-# From root directory
-cd frontend
-npm run dev
-# Access at http://localhost:3001
-```
+## 🚀 Quick Start
 
-## Deployment
+### Running the Website
 
-### Sanity Studio
-Your Sanity Studio is already deployed at:
-`https://syncsummit.sanity.studio`
+1. **Using Python server (recommended - supports clean URLs):**
+   ```bash
+   python3 server.py
+   ```
+   Access the site at http://localhost:8080
+   
+   Clean URLs work automatically:
+   - `/courses` → `courses.html`
+   - `/events` → `events.html`
 
-### Frontend Website
-The frontend can be deployed to:
-- Vercel (recommended)
-- Netlify
-- Any Node.js hosting service
+2. **Using simple HTTP server:**
+   ```bash
+   python3 -m http.server 8080
+   ```
 
-## Need Help?
+3. **Using npm scripts:**
+   ```bash
+   npm run serve
+   ```
 
-### Common Tasks
+## 🎯 Features
 
-**Adding a New Event:**
-1. Go to Sanity Studio
-2. Click "Events" in the sidebar
-3. Click "Create new Event"
-4. Fill in all fields
-5. Click "Publish"
+### Homepage
+- Hero section with membership call-to-action
+- Four main content cards (Courses, Summits, Consulting, Intelligence)
+- Sidebar with event registrations and recent posts
+- Integrated search functionality
 
-**Updating Homepage Content:**
-1. Go to Sanity Studio
-2. Click "Homepage" in the sidebar
-3. Edit any section
-4. Click "Publish"
+### Navigation
+- **COURSES**: The Sync Course, The Music Brands & Ads Course
+- **EVENTS**: 2025/2026 Sync Summits, AdSync Summit, Video Archives
+- **LISTENING SESSIONS**: Upcoming sessions with industry experts
+- **ARTICLES**: Metadata guides, Sync Cafe, Blog
+- **CONSULTING**: Professional services
+- **ABOUT**: Company information
 
-**Adding a Blog Post:**
-1. Go to Sanity Studio
-2. Click "Blog Posts"
-3. Click "Create new Blog Post"
-4. Write your content
-5. Add images if needed
-6. Click "Publish"
+### Course Page
+- Detailed course information with testimonials
+- Two main courses:
+  - THE SYNC COURSE: 16 weeks, 9 listening sessions, 7 classes – $699
+  - The Music In Ads Course – $999
 
-### Support
+### Events Page
+- 2025 Sync Summit NY & 2026 LA
+- 2025 AdSync Summit (October 6-7)
+- Video Archives with contact database access ($299)
 
-For technical support or to add new features, contact your developer.
+## 🔧 Sanity CMS Integration
 
-## Environment Variables
+The website is prepared for Sanity CMS integration at syncsummit.sanity.studio.
 
-The frontend needs these environment variables (already configured):
-- `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity project ID
-- `NEXT_PUBLIC_SANITY_DATASET`: "production"
+### Setup Sanity
 
-## Backup
+1. **Configure environment variables:**
+   ```bash
+   cp .env.example .env
+   # Edit .env with your Sanity project details
+   ```
 
-Your content is automatically backed up by Sanity. You can also export your data anytime from Sanity Studio under "Settings" → "Export".
+2. **Run automated setup:**
+   ```bash
+   chmod +x setup-sanity.sh
+   ./setup-sanity.sh
+   ```
+
+3. **Update project ID in HTML files:**
+   Replace `'your-project-id'` with your actual Sanity project ID in all HTML files.
+
+### Content Types
+- Homepage content
+- Blog posts
+- Events
+- Courses
+- Team members
+
+## 🛠️ Development
+
+### Adding New Pages
+1. Create new HTML file following the existing structure
+2. Include the navigation header and footer
+3. Link to `styles.css` for consistent styling
+4. Add page to navigation dropdowns
+
+### Customizing Styles
+- Global styles are in `styles.css`
+- Color variables are defined in CSS `:root`
+- Utility classes available for common patterns
+
+## 📱 Mobile Support
+
+- Responsive navigation with hamburger menu
+- Touch-friendly dropdown menus
+- Optimized layouts for all screen sizes
+- Fast loading and smooth animations
+
+## 🚢 Deployment
+
+1. Build static files
+2. Configure your web server to support clean URLs
+3. Set up Sanity webhook for content updates
+4. Enable CDN for optimal performance
+
+## 📄 License
+
+Copyright © 2025 Sync Summit. All rights reserved.
 
 ---
 
-Remember: All content updates are done through Sanity Studio. Never edit the code files directly unless you know what you're doing!
+Built with ❤️ for the music sync community
