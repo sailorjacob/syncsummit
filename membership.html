@@ -18,9 +18,9 @@
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    /* Page-specific styles */
-    :root {
-      /* Updated Color Scheme - More subtle with neon accents */
+    /* Page-specific styles - Scoped to membership page */
+    .membership-page {
+      /* Reset any inherited styles that might affect other pages */
       --membership-primary: #00B4D8;  /* Soft neon blue */
       --membership-primary-light: #90E0EF;
       --membership-primary-dark: #0077B6;
@@ -30,7 +30,7 @@
       --membership-bg: #F8FAFC;  /* Very light blue-gray */
     }
     
-    .membership-hero {
+    .membership-page .membership-hero {
       background: linear-gradient(135deg, var(--membership-bg) 0%, white 100%);
       padding: 8rem 0 4rem;
       text-align: center;
@@ -39,7 +39,7 @@
       overflow: hidden;
     }
     
-    .membership-hero::before {
+    .membership-page .membership-hero::before {
       content: '';
       position: absolute;
       top: 0;
@@ -49,69 +49,38 @@
       background: 
         radial-gradient(circle at 20% 80%, rgba(0, 180, 216, 0.08) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 97, 210, 0.08) 0%, transparent 50%);
-      animation: gradientShift 15s ease-in-out infinite;
+      animation: membershipGradientShift 15s ease-in-out infinite;
     }
     
-    @keyframes gradientShift {
+    @keyframes membershipGradientShift {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.1); }
     }
     
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    
-    .page-title {
+    .membership-page .page-title {
       font-size: 2.75rem;
       font-weight: 700;
       text-transform: none;
       letter-spacing: -0.5px;
+      color: var(--text-primary);
     }
     
-    .page-subtitle {
+    .membership-page .page-subtitle {
       font-size: 1.25rem;
       font-weight: 400;
       text-transform: none;
       letter-spacing: -0.2px;
+      color: var(--text-secondary);
     }
     
-    .membership-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 4rem 1.5rem;
-    }
-    
-    /* Benefits Section */
-    .benefits-section {
-      margin-bottom: 4rem;
-    }
-    
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-primary);
-      font-weight: 800;
-    }
-    
-    .section-subtitle {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      margin-bottom: 3rem;
-      text-transform: none;
-      font-weight: 400;
-      max-width: 900px;
-    }
-    
-    .benefits-grid {
+    .membership-page .benefits-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
       margin-bottom: 4rem;
     }
     
-    .benefit-card {
+    .membership-page .benefit-card {
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -119,19 +88,19 @@
       border: 1px solid rgba(0, 180, 216, 0.1);
       border-radius: 16px;
       padding: 2rem;
-      transition: var(--transition);
+      transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0, 180, 216, 0.05);
     }
     
-    .benefit-card:hover {
+    .membership-page .benefit-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 24px rgba(0, 180, 216, 0.1);
       border-color: var(--membership-primary-light);
     }
     
-    .benefit-icon-wrapper {
+    .membership-page .benefit-icon-wrapper {
       width: 64px;
       height: 64px;
       background: linear-gradient(135deg, var(--membership-primary-light), var(--membership-accent-light));
@@ -145,94 +114,41 @@
       transition: all 0.3s ease;
     }
     
-    .benefit-card:hover .benefit-icon-wrapper {
+    .membership-page .benefit-card:hover .benefit-icon-wrapper {
       transform: scale(1.1);
       background: linear-gradient(135deg, var(--membership-primary), var(--membership-accent));
       color: white;
     }
     
-    .benefit-title {
+    .membership-page .benefit-title {
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 1rem;
       text-align: left;
       text-transform: none;
+      color: var(--text-primary);
     }
     
-    .benefit-description {
+    .membership-page .benefit-description {
       flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-secondary);
+      text-align: left;
     }
     
-    .benefit-value {
+    .membership-page .benefit-value {
       margin-top: 1rem;
       padding-top: 0.75rem;
       border-top: 1px solid rgba(0, 180, 216, 0.1);
+      color: var(--membership-primary);
+      font-weight: 600;
     }
     
-    /* What's Included Section */
-    .included-section {
-      background: white;
-      padding: 3rem;
-      border-radius: 16px;
-      margin-bottom: 4rem;
-      border: 1px solid rgba(0, 180, 216, 0.1);
-      box-shadow: 0 2px 12px rgba(0, 180, 216, 0.05);
-    }
-    
-    .included-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      list-style: none;
-    }
-    
-    .included-item {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem 1.25rem;
-      background: var(--membership-bg);
-      border-radius: 12px;
-      border: 1px solid rgba(0, 180, 216, 0.1);
-      transition: var(--transition);
-    }
-    
-    .included-item:hover {
-      transform: translateX(5px);
-      border-color: var(--membership-primary-light);
-      background: white;
-    }
-    
-    .included-icon {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, var(--membership-primary-light), var(--membership-accent-light));
-      color: var(--membership-primary-dark);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.875rem;
-      flex-shrink: 0;
-    }
-    
-    .included-text {
-      color: var(--text-primary);
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
-    
-    /* Pricing Section */
-    .pricing-section {
-      text-align: center;
-      margin-top: 4rem;
-      position: relative;
-    }
-    
-    .pricing-card {
+    .membership-page .pricing-card {
       background: white;
       border: 1px solid rgba(0, 180, 216, 0.1);
       border-radius: 20px;
@@ -244,36 +160,16 @@
       box-shadow: 0 4px 24px rgba(0, 180, 216, 0.08);
     }
     
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--membership-primary-light), var(--membership-accent-light));
-    }
-    
-    .price {
+    .membership-page .price {
       font-size: 4rem;
       font-weight: 800;
-      background: linear-gradient(135deg, var(--membership-primary), var(--membership-accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: var(--membership-primary);
       margin-bottom: 0.5rem;
       position: relative;
       display: inline-block;
     }
     
-    .price-period {
-      color: var(--text-secondary);
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
-      font-weight: 500;
-    }
-    
-    .price-cta {
+    .membership-page .price-cta {
       display: inline-block;
       background: linear-gradient(135deg, var(--membership-primary), var(--membership-accent));
       color: white;
@@ -288,7 +184,7 @@
       box-shadow: 0 4px 12px rgba(0, 180, 216, 0.15);
     }
     
-    .price-cta:hover {
+    .membership-page .price-cta:hover {
       transform: translateY(-2px);
       box-shadow: 0 6px 16px rgba(0, 180, 216, 0.2);
       background: linear-gradient(135deg, var(--membership-primary-dark), var(--membership-accent-dark));
@@ -296,159 +192,23 @@
     
     /* Responsive styles */
     @media (max-width: 1200px) {
-      .benefits-grid {
+      .membership-page .benefits-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
     
     @media (max-width: 768px) {
-      .benefits-grid {
+      .membership-page .benefits-grid {
         grid-template-columns: 1fr;
       }
       
-      .page-title {
+      .membership-page .page-title {
         font-size: 2rem;
       }
-      
-      .pricing-card {
-        padding: 2rem;
-      }
-      
-      .price {
-        font-size: 3rem;
-      }
-      
-      .included-section {
-        padding: 2rem;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .membership-hero {
-        padding: 6rem 0 3rem;
-      }
-      
-      .page-title {
-        font-size: 1.75rem;
-      }
-      
-      .membership-container {
-        padding: 3rem 1rem;
-      }
-    }
-
-    /* Footer */
-    footer {
-      background: white;
-      padding: 1.5rem 0;
-      margin-top: 4rem;
-      border-top: 1px solid var(--border);
-    }
-    
-    .footer-content {
-      text-align: left;
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      padding-left: 1.5rem;
-    }
-    
-    .footer-content p {
-      margin-bottom: 0;
-    }
-
-    /* Loading message styles - Monochrome */
-    .loading-message {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.95);
-      color: #FFFFFF;
-      padding: 2rem 3rem;
-      border-radius: 8px;
-      text-align: center;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .loading-message.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .loading-message h3 {
-      color: #FFFFFF;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-
-    .loading-message p {
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 0;
-      font-size: 0.95rem;
-    }
-
-    .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #FFFFFF;
-      border-radius: 50%;
-      margin: 1rem auto;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Additional styles for new content */
-    .pricing-header {
-      margin-bottom: 2rem;
-    }
-    
-    .price-discount {
-      font-size: 1.25rem;
-      color: var(--membership-accent);
-      font-weight: 600;
-      margin-top: 0.5rem;
-    }
-    
-    .pricing-details {
-      margin: 2rem 0;
-      padding: 1.5rem;
-      background: var(--membership-bg);
-      border-radius: 12px;
-    }
-    
-    .standard-price {
-      font-size: 1.125rem;
-      color: var(--text-secondary);
-      text-decoration: line-through;
-      margin-bottom: 0.5rem;
-    }
-    
-    .offer-expires {
-      font-size: 1rem;
-      color: var(--membership-accent);
-      font-weight: 500;
-    }
-    
-    .pricing-note {
-      margin-top: 1.5rem;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      line-height: 1.5;
     }
   </style>
 </head>
-<body>
+<body class="membership-page">
   <!-- Page Transition Overlay -->
   <div class="page-transition">
     <div class="transition-loader"></div>
